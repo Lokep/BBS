@@ -1,0 +1,38 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'PingFang SC';
+}
+
+html,
+body {
+    width: 100%;
+    height: auto;
+    background-color: #F6F6F6;
+    min-width: 1032px;
+    min-height: 100%;
+    min-height: 100vh;
+}
+
+li {
+    list-style: none;
+}
+
+img,
+input,
+span,
+textarea {
+    display: block;
+}
+
+img {
+    outline: none;
+    border: none;
+}
+
+button {
+    -webkit-appearance: none;
+    outline: none;
+    border: none;
+    background-color: transparent;
+}

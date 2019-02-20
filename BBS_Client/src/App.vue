@@ -1,23 +1,46 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+    <Nav v-if="!$route.meta.notNeedNav"></Nav>
+    <div class="container">
+        <router-view/>
+        
+    </div>
+    
   </div>
 </template>
 
 <script>
+import Nav from './components/layout/nav'
 export default {
-  name: 'App'
+  name: 'App',
+  data(){
+    return{
+      notNeedNav:false
+    }
+  },
+  components:{
+      Nav
+  },
+  methods:{
+
+  },
+  mounted(){
+    console.log(this.$route)
+  }
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+#app{
+  width: 100%;
+    height: auto;
+    min-height: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+}
+.container{
+  width: 1032px;
+  margin: 10px auto;
+  padding: 60px 0 0 0;
 }
 </style>

@@ -1,0 +1,101 @@
+.container-width {
+    width: 1032px;
+    margin: 0 auto;
+    height: 100%;
+}
+
+.ov {
+    overflow: hidden;
+}
+
+.fl {
+    float: left!important;
+}
+
+.fr {
+    float: right!important;
+}
+
+.ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.ellipsis-within-two-rows,
+.ellipsis-within-four-rows {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+
+.ellipsis-within-two-rows {
+    -webkit-line-clamp: 2;
+}
+
+.ellipsis-within-four-rows {
+    -webkit-line-clamp: 4;
+}
+
+.list-inshort-with-img {
+    width: 446px;
+    height: 100px;
+}
+
+.list-inshort-without-img {
+    width: 654px;
+    height: 50px;
+}
+
+
+/* 发现 话题 页面的大标题 */
+
+.common-title {
+    font-size: 24px;
+    line-height: 1.5;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #009a61;
+    border-color: #008151;
+}
+
+.btn-sm {
+    padding: 5px 10px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 3px;
+}
+
+.inline {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+.hover-in-blue:hover {
+    color: #007fff;
+}
+
+
+/* 富文本编辑器编辑区域 */
+
+.ql-editor {
+    min-height: 500px!important;
+}
