@@ -16,7 +16,7 @@ const app = express();
 
 
 //express.static 中间件函数会根据目录的添加顺序查找所需的文件
-// app.use('/',express.static(path.join(__dirname, 'public')))
+app.use('/', express.static(path.join(__dirname, 'public')))
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
