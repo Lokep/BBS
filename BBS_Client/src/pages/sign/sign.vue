@@ -47,16 +47,22 @@
             <img class="sign-carton" v-else-if="cartonIndex==1" src="../../assets/images/sign-greeting.png">
             <img class="sign-carton" v-else src="../../assets/images/sign-blindfold.png">
             <div v-if="loginOrRegister==true">
-                <el-form>
-                    <el-form-item label="手机号/邮箱">
-                        <el-input placeholder="请输入手机号或邮箱" @focus="shifrCarton" @blur="initCarton"></el-input>
+                <el-form ref="loginForm" :model="loginForm" :rules="loginRules" status-icon>
+                    <el-form-item 
+                        label="手机号/邮箱"
+                        prop="account"
+                        >
+                        <el-input v-model="loginForm.account" placeholder="请输入手机号或邮箱" @focus="shifrCarton" @blur="initCarton"></el-input>
                     </el-form-item>
-                    <el-form-item label="密码">
-                        <el-input placeholder="请输入您的密码" type="password" @focus="shifrCarton" @blur="initCarton"></el-input>
+                    <el-form-item 
+                        label="密码" 
+                        prop="password"
+                    >
+                        <el-input v-model="loginForm.password" placeholder="请输入您的密码" type="password" @focus="shifrCarton" @blur="initCarton"></el-input>
                     </el-form-item>
                     <el-form-item>
                         <div class="sign-buttons ov">
-                            <el-button type="primary" size="medium" class="sign-button">登录</el-button>
+                            <el-button type="primary" size="medium" class="sign-button" @click="login('loginForm')">登录</el-button>
                         </div>
                     </el-form-item>
                 </el-form>
@@ -67,18 +73,18 @@
             </div>
 
             <div v-else-if="loginOrRegister==false">
-                <el-form>
-                    <el-form-item label="手机号">
-                        <el-input placeholder="请输入手机号" @focus="shifrCarton" @blur="initCarton"></el-input>
+                <el-form ref="registerForm" :model="registerForm" :rules="registerRules" status-icon>
+                    <el-form-item label="手机号" prop="phone">
+                        <el-input v-model="registerForm.phone" placeholder="请输入手机号" @focus="shifrCarton" @blur="initCarton"></el-input>
                     </el-form-item>
-                    <el-form-item label="邮箱E-mail">
-                        <el-input placeholder="请输入邮箱" @focus="shifrCarton" @blur="initCarton"></el-input>
+                    <el-form-item label="邮箱E-mail" prop="email">
+                        <el-input v-model="registerForm.email" placeholder="请输入邮箱" @focus="shifrCarton" @blur="initCarton"></el-input>
                     </el-form-item>
-                    <el-form-item label="密码">
-                        <el-input placeholder="请输入您的密码" type="password" @focus="shifrCarton" @blur="initCarton"></el-input>
+                    <el-form-item label="密码" prop="password">
+                        <el-input v-model="registerForm.password" placeholder="请输入您的密码" type="password" @focus="shifrCarton" @blur="initCarton"></el-input>
                     </el-form-item>
-                    <el-form-item label="确认密码">
-                        <el-input placeholder="请再次输入您的密码" type="password" @focus="shifrCarton" @blur="initCarton"></el-input>
+                    <el-form-item label="确认密码" prop="password">
+                        <el-input v-model="registerForm.password" placeholder="请再次输入您的密码" type="password" @focus="shifrCarton" @blur="initCarton"></el-input>
                     </el-form-item>
                     <el-form-item>
                         <div class="sign-buttons ov">
@@ -100,13 +106,90 @@ export default {
     data(){
         return{
             loginOrRegister:true,
-            cartonIndex:0
+            cartonIndex:0,
+            loginForm:{
+                account:'',
+                accountType:'',
+                password:''
+            },
+            registerForm:{
+                phone:'',
+                email:'',
+                password:''
+            },
+            regForPhone:/^1[34578]\d{9}$/,
+            regForEmail:/(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/,
+            regForAccount:/(^1[34578]\d{9}$)|(^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$)/i,
+            loginRules:{
+                account:[{
+                    required:true,
+                    message: '账号不可为空',
+                    trigger: 'blur'
+                },{
+                    pattern:this.regForAccount,
+                    trigger:'blur',
+                    message:'请正确输入您的手机号或者邮箱'
+                }],
+                password:[{
+                    required:true,
+                    message: '密码不可为空',
+                    trigger: 'blur'
+                }]
+            },
+            registerRules:{
+                phone:[{
+                    required:true,
+                    message: '手机号不可为空',
+                    trigger: 'blur'
+                },{
+                    pattern:this.regForPhone,
+                    trigger:'blur',
+                    message:'请正确输入您的手机号'
+                }],
+                email:[{
+                    required:true,
+                    message: '邮箱地址不可为空',
+                    trigger: 'blur'
+                },{
+                    pattern:this.regForEmail,
+                    trigger:'blur',
+                    message:'请正确输入您的Email'
+                }],
+                password:[{
+                    required:true,
+                    message: '密码不可为空',
+                    trigger: 'blur'
+                }]
+            }
         }
     },
     components:{
 
     },
+    mounted(){
+        
+    },
     methods:{
+        login(formName){
+            let that = this
+            console.log(that.loginForm.account,that.regForPhone.test(that.loginForm.account));
+            this.$refs[formName].validate((valid) => {
+                
+                if (valid) {
+
+                    that.loginForm.accountType = that.regForPhone.test(that.loginForm.account)?'phone':'email'
+                    console.log(that.loginForm)
+                    that.$axios.get('http://192.168.1.90:3000/users',that.loginForm).then(res=>{
+                        console.log(res)
+                    }).catch(err=>{
+                        console.log(err)
+                    })
+                } else {
+                    console.log('error submit!!');
+                    return false;
+                }
+            });
+        },
         shifrCarton(e){
             let iptType = e.target.type
             if(iptType=='text'){
