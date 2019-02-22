@@ -89,14 +89,14 @@ export default {
             },
             regForPhone:/^1[34578]\d{9}$/,
             regForEmail:/(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/,
-            regForAccount:/(^1[34578]\d{9}$)|(^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$)/i,
+            regForAccount:/(^1[34578]\d{9}$)|(^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$)/i,
             loginRules:{
                 account:[{
                     required:true,
                     message: '账号不可为空',
                     trigger: 'blur'
                 },{
-                    pattern:this.regForAccount,
+                    pattern:this.regForPhone,
                     trigger:'blur',
                     message:'请正确输入您的手机号或者邮箱'
                 }],

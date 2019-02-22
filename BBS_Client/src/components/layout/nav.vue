@@ -139,8 +139,8 @@
             </li>
         </ul>
         <el-menu v-else class="nav-unlogged-in fr nav-user el-menu-demo" :router=true mode="horizontal" @select="show">
-            <el-menu-item index='/sign'>登录</el-menu-item>
-            <el-menu-item index='/sign'>注册</el-menu-item>
+            <el-menu-item index='/login'>登录</el-menu-item>
+            <el-menu-item index='/register'>注册</el-menu-item>
         </el-menu>
     </div>
 </div>
