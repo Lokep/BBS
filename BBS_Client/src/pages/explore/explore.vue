@@ -17,17 +17,17 @@
     <div class="explore">
         <div class="explore-title ov">
             <h4 class="common-title fl">最新活动</h4>
-            <el-select v-model="value" placeholder="全部类型" size="small">
+            <el-select v-model="typeValue" placeholder="全部类型" size="small" @change='selectActivity'>
                 <el-option
-                v-for="item in options"
+                v-for="item in activityType"
                 :key="item.value"
                 :label="item.label"
                 :value="item.value">
                 </el-option>
             </el-select>
-            <el-select v-model="value" placeholder="全部类型" size="small">
+            <el-select v-model="cityValue" placeholder="全部城市" size="small" @change='selectActivity' >
                 <el-option
-                v-for="item in options"
+                v-for="item in activityCity"
                 :key="item.value"
                 :label="item.label"
                 :value="item.value">
@@ -36,7 +36,7 @@
         </div>
 
         <div class="explore-lists ov">
-            <Activity></Activity>
+            <Activity v-for="(a, i) in activityList" :key = "i" :activityInfo="a"></Activity>
         </div>
         <EnddingLine></EnddingLine>
     </div>
@@ -45,23 +45,24 @@
 
 import Activity from '../../components/explore/activity'
 import EnddingLine from '../../components/endding-line/endding-line'
+import { city } from '../../assets/javascripts/city.js'
 export default {
     data(){
         return {
-            options: [{
-            value: '选项1',
-            label: '全部类型'
+            activityType: [{
+                value: null,
+                label: '全部类型'
+            },  {
+                value: '0',
+                label: '线上活动'
             }, {
-            value: '选项2',
-            label: '黑客马拉松'
-            }, {
-            value: '选项3',
-            label: '线上活动'
-            }, {
-            value: '选项4',
-            label: '线下活动'
+                value: '1',
+                label: '线下活动'
             }],
-            value: ''
+            activityCity:city,
+            typeValue: '',
+            cityValue:'',
+            activityList:[]
         }
     },
     components:{
@@ -69,10 +70,23 @@ export default {
         EnddingLine
     },
     methods:{
-        
+        selectActivity(){
+            let exploreApi = '/api/explore/activity'
+            let params = {
+                type:this.typeValue,
+                cityCode:this.cityValue
+            }
+            console.log(params)
+            this.$axios.post(exploreApi,params).then(res=>{
+                this.activityList = res.data;
+                console.log(res)
+            }).catch(err=>{
+                console.log(err)
+            })
+        }
     },
     mounted(){
-        
+        this.selectActivity()
     },
     watch:{
 

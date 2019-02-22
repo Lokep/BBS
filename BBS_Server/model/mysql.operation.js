@@ -5,19 +5,19 @@ const mysqlConfig = require('./mysql.config')
 var pool = mysql.createPool(mysqlConfig.mysql);
 
 // 向前台返回JSON方法的简单封装
-var jsonWrite = function(res, ret) {
-    if (typeof ret === 'undefined') {
-        res.json({
-            code: '1',
-            msg: '操作失败'
-        });
-    } else {
-        res.json(ret);
-    }
-};
+// var jsonWrite = function(res, ret) {
+//     if (typeof ret === 'undefined') {
+//         res.json({
+//             code: '1',
+//             msg: '操作失败'
+//         });
+//     } else {
+//         res.json(ret);
+//     }
+// };
 
 module.exports = {
-    add: function(sql, params, res) {
+    add: function(sql, params, cb) {
         pool.getConnection(function(err, connection) {
             if (err) {
                 console.log(`数据库连接失败:${err}`)
@@ -42,6 +42,7 @@ module.exports = {
                 // 释放连接 
                 connection.release();
             });
+
         });
     },
     delete: function(sql, params, res) {
@@ -73,8 +74,6 @@ module.exports = {
                 break
             }
         }
-
-
         pool.getConnection(function(err, connection) {
             if (err) {
                 console.log(`数据库连接失败:${err}`)
@@ -97,18 +96,21 @@ module.exports = {
         });
 
     },
-    query: function(sql, params, res) {
+    query: function(sql, params, cb) {
 
         pool.getConnection(function(err, connection) {
-            connection.query(sql, params, function(err, result) {
-                if (err) {
-                    console.log(`查询失败:${err}`)
-                    return false
-                }
-                jsonWrite(res, result);
-                connection.release();
-            });
-        });
-    }
+            connection.query(sql, params, cb)
+                //     function(err, result) {
+                //     if (err) {
+                //         console.log(`查询失败:${err}`)
+                //         return false
+                //     }
+                //     jsonWrite(res, result);
 
-};
+            // });
+            // }
+            // );
+            connection.release();
+        })
+    }
+}

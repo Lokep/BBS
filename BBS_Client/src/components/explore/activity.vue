@@ -34,21 +34,22 @@
 </style>
 <template>
     <div class="activity fl">
-        <router-link to="/">
-            <img class="activity-img" src="../../assets/images/activity.jpg" alt="LOGO">
-        </router-link>
+        <a :href="activityInfo.link">
+            <img class="activity-img" :src="activityInfo.imgSrc" alt="LOGO">
+        </a>
         <div class="activity-info">
-            <router-link tag="p" to="/" class="ellipsis-within-two-rows activity-title">2019新春支付宝红包技术大揭秘 | 线上峰会</router-link>
-            <span class="activity-detail">时间：{{date}} {{day}}</span>
-            <span class="activity-detail">城市：{{city}}</span>
+            <a :href="activityInfo.link" class="ellipsis-within-two-rows activity-title hover-in-blue">{{activityInfo.title}}</a>
+            <span class="activity-detail">时间：{{activityInfo.time}}</span>
+            <span class="activity-detail">城市：{{activityInfo.city}}</span>
         </div>
         <div class="ov">
-            <button class="fr btn-primary btn-sm btn">立即报名</button>
+            <a :href="activityInfo.link" class="fr btn-primary btn-sm btn" target="_blanket">立即报名</a>
         </div>
     </div>
 </template>
 <script>
 export default {
+    props:['activityInfo'],
     data(){
         return{
             city:'hangzhou',
@@ -59,7 +60,6 @@ export default {
     },
     mounted(){
         var b = this.replcement(this.now)>this.replcement(this.date)
-        console.log(this.replcement(this.now),this.replcement(this.date),b)
     },
     methods:{
         replcement(str){

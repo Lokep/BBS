@@ -126,7 +126,11 @@ export default {
                     that.loginForm.accountType = that.regForPhone.test(that.loginForm.account)?'phone':'email'
                     console.log(that.loginForm)
                     that.$axios.post(loginAPI,that.loginForm).then(res=>{
-                        console.log(res)
+                        if(res.data.length){
+                            console.log(res.data)
+                            this.$router.push({path:'/',params:res.data})
+                        }
+                        
                     }).catch(err=>{
                         console.log(err)
                     })

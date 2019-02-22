@@ -6,11 +6,10 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var exploreRouter = require('./routes/explore/index');
 
 var app = express();
 
-// const mysqlConfig = require('./database/mysql.config')
-// console.log(`mysqlConfig:${mysqlConfig}`)
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -34,6 +33,7 @@ app.all('*', function(req, res, next) {
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/explore', exploreRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

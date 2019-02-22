@@ -103,14 +103,40 @@ export default {
             }else{
 
                 this.$axios.post(checkPhoneAPI,params).then(res=>{
+                    console.log(res.data)
                     if(res.data.isExisits){
                         callback(new Error('该号码已存在'))
+                    }else{
+                        callback()
                     }
                 }).catch(err =>{
                     callback(new Error('请重新输入手机号'))
                 })
             }
             
+        }
+        const ruleForUniqueEmail = (rule,value,callback)=>{
+            let checkEmailAPI = '/api/users/checkUniqueEmail'
+            let params = {
+                email:this.$refs.registerForm.model.email
+            }
+            if(value===''){
+                callback(new Error('邮箱不可为空哦'))
+            }else if( !this.regForEmail.test(value) ){
+                callback(new Error('请正确输入您的Email'))
+            }else{
+
+                this.$axios.post(checkEmailAPI,params).then(res=>{
+                    console.log(res.data)
+                    if(res.data.isExisits){
+                        callback(new Error('该邮箱已存在啦'))
+                    }else{
+                        callback()
+                    }
+                }).catch(err =>{
+                    callback(new Error('请重新输入您的邮箱'))
+                })
+            }
         }
         return{
             cartonIndex:0,
@@ -132,10 +158,10 @@ export default {
                 }],
                 phone:[{
                     required:true,
-                    // validator: ruleForUniquePhone,
+                    validator: ruleForUniquePhone,
                     trigger: 'blur'
                 },{
-                    pattern:this.regForPhone,
+                    pattern:/^1[34578]\d{9}$/,
                     trigger:'blur',
                     message:'请正确输入您的手机号'
                 }],
@@ -144,9 +170,9 @@ export default {
                     message: '邮箱地址不可为空',
                     trigger: 'blur'
                 },{
-                    pattern:this.regForEmail,
-                    trigger:'blur',
-                    message:'请正确输入您的Email'
+                    required:true,
+                    validator: ruleForUniqueEmail,
+                    trigger: 'blur'
                 }],
                 password:[{
                     required:true,
