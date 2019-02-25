@@ -81,6 +81,7 @@
     </div>
 </template>
 <script>
+import STORAGE from '../../assets/javascripts/storage.js'
 export default {
     data(){
         const ruleForConfirmPassword=(rule,value,callback)=>{
@@ -195,7 +196,9 @@ export default {
 
     },
     mounted(){
-        
+        // if(STORAGE.GET().length != 0){
+        //     this.$router.push('/')
+        // }
     },
     methods:{
         register(formName){

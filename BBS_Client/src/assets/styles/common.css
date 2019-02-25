@@ -77,6 +77,11 @@
     vertical-align: top;
 }
 
+.inline-middle {
+    display: inline-block;
+    vertical-align: middle;
+}
+
 .pointer {
     cursor: pointer;
 }

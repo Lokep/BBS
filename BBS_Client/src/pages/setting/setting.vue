@@ -78,8 +78,8 @@
         <div class="setting-left fl">
             <ul>
                 <li>
-                    <img class="inline" src="../../assets/svgs/user.svg">
-                    <span class="inline">账户与密码</span>
+                    <img class="inline-middle" src="../../assets/svgs/user.svg">
+                    <span class="inline-middle">账户与密码</span>
                 </li>
             </ul>
         </div>

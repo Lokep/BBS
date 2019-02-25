@@ -166,6 +166,7 @@ export default {
         quit(){
             STORAGE.REMOVE()
             this.isLogged = false
+            this.$router.push('/login')
         }
         
     },

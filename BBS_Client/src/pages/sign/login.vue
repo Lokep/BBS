@@ -62,7 +62,7 @@
                     </el-form-item>
                     <el-form-item>
                         <div class="sign-buttons ov">
-                            <el-button type="primary" size="medium" class="sign-button" @click="login('loginForm')">登录</el-button>
+                            <el-button type="primary" size="medium" class="sign-button" @click="login('loginForm')" >登录</el-button>
                         </div>
                     </el-form-item>
                 </el-form>
@@ -109,6 +109,15 @@ export default {
             }
         }
     },
+    created(){
+        let that = this;
+        document.onkeydown = function(e) {
+            var key = window.event.keyCode;
+            if (key == 13) {
+                that.login('loginForm');
+            }
+        }
+    },
     components:{
 
     },
@@ -140,6 +149,7 @@ export default {
                     return false;
                 }
             });
+            console.log('123456')
         },
         shifrCarton(e){
             let iptType = e.target.type
