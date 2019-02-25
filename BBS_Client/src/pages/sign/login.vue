@@ -77,6 +77,7 @@
     </div>
 </template>
 <script>
+import STORAGE from '../../assets/javascripts/storage.js'
 export default {
     data(){
         return{
@@ -96,7 +97,7 @@ export default {
                     message: '账号不可为空',
                     trigger: 'blur'
                 },{
-                    pattern:this.regForPhone,
+                    pattern:/(^1[34578]\d{9}$)|(^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$)/i,
                     trigger:'blur',
                     message:'请正确输入您的手机号或者邮箱'
                 }],
@@ -127,7 +128,7 @@ export default {
                     console.log(that.loginForm)
                     that.$axios.post(loginAPI,that.loginForm).then(res=>{
                         if(res.data.length){
-                            console.log(res.data)
+                            STORAGE.SET(res.data)
                             this.$router.push({path:'/',params:res.data})
                         }
                         

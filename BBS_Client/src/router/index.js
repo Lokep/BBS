@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+
 import Index from '@/pages/index/index'
 import Topics from '@/pages/topics/topics'
 import Explore from '@/pages/explore/explore'
@@ -12,6 +13,8 @@ import Editor from '@/pages/editor/editor'
 import Collection from '@/pages/collection/collection'
 import Hot from '@/pages/hot/hot'
 
+import STORAGE from '../assets/javascripts/storage'
+
 Vue.use(Router)
 
 const router = new Router({
@@ -19,7 +22,8 @@ const router = new Router({
     routes: [{
         path: '/',
         name: 'index',
-        component: Index
+        component: Index,
+        alias: '/index'
     }, {
         path: '/topics',
         name: 'topics',
@@ -77,13 +81,25 @@ const router = new Router({
 
 // navigation-guards
 
+
 router.beforeEach((to, from, next) => {
     // to: Route: 即将要进入的目标 路由对象
     // from: Route: 当前导航正要离开的路由
     // next: Function: 一定要调用该方法来 resolve 这个钩子。执行效果依赖 next 方法的调用参数。
 
+    const loginInfo = STORAGE.GET()
+        //白名单
+    const freeRoute = ['login', 'register', 'index']
+    const inFreeRoute = freeRoute.indexOf(to.name)
+    if (inFreeRoute < 0 && loginInfo == '') {
 
-    next();
+        next('/login');
+
+    } else if (inFreeRoute >= 0 && loginInfo !== '') {
+        next('/index');
+    }
+    // console.log(inFreeRoute, loginInfo)
+    next()
 })
 
 export default router

@@ -129,10 +129,10 @@
                             </router-link>
                         </el-dropdown-item>
                         <el-dropdown-item>
-                            <router-link to="/" tag="div">
+                            <div @click="quit">
                                 <img class="nav-icon-user" src="../../assets/svgs/quit.svg" alt="">
                                 退出
-                            </router-link>
+                            </div>
                         </el-dropdown-item>
                     </el-dropdown-menu>
                 </el-dropdown>
@@ -146,7 +146,7 @@
 </div>
 </template>
 <script>
-
+import STORAGE from '../../assets/javascripts/storage.js'
 export default {
     data() {
         return {
@@ -163,14 +163,20 @@ export default {
         show(key,keyPath){
             console.log(key,keyPath);
         },
+        quit(){
+            STORAGE.REMOVE()
+            this.isLogged = false
+        }
         
-        
+    },
+    beforeMount(){
+        this.isLogged = STORAGE.GET()==''?false:true
     },
     mounted() {
 
     },
     watch: {
-
+        
     },
     computed: {
 
