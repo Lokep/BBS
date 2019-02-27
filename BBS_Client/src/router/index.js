@@ -95,7 +95,6 @@ router.beforeEach((to, from, next) => {
     if (inFreeRoute < 0 && loginInfo.length == '') {
 
         next('/login');
-
     } else if (inFreeRoute >= 0 && loginInfo.length == 1) {
         next('/index');
     } else {
