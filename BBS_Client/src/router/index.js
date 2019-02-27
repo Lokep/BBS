@@ -95,11 +95,12 @@ router.beforeEach((to, from, next) => {
 
         next('/login');
 
-    } else if (inFreeRoute >= 0 && loginInfo !== '') {
+    } else if (inFreeRoute >= 0 && loginInfo.length !== 0) {
         next('/index');
-    }
-    // console.log(inFreeRoute, loginInfo)
+    } else {
+
     next()
+    }
 })
 
 export default router
