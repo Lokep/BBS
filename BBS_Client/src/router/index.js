@@ -87,20 +87,21 @@ router.beforeEach((to, from, next) => {
     // from: Route: 当前导航正要离开的路由
     // next: Function: 一定要调用该方法来 resolve 这个钩子。执行效果依赖 next 方法的调用参数。
 
-    const loginInfo = STORAGE.GET()
-        //白名单
-    const freeRoute = ['login', 'register', 'index']
+    const loginInfo = STORAGE.GET() //array
+
+    //白名单
+    const freeRoute = ['login', 'register']
     const inFreeRoute = freeRoute.indexOf(to.name)
-    if (inFreeRoute < 0 && loginInfo == '') {
+    if (inFreeRoute < 0 && loginInfo.length == '') {
 
         next('/login');
-
-    } else if (inFreeRoute >= 0 && loginInfo.length !== 0) {
+    } else if (inFreeRoute >= 0 && loginInfo.length == 1) {
         next('/index');
     } else {
-
-    next()
+        next()
     }
+    console.log(`inFreeRoute:${inFreeRoute}`, `loginInfo:${loginInfo.constructor === Array}`)
+        // next()
 })
 
 export default router
