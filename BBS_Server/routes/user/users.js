@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../model/mysql.operation')
+const db = require('../../model/mysql.operation')
 
-const jsonResult = require('../model/jsonResult')
+const jsonResult = require('../../model/jsonResult')
 
 const USERINFO_TABLE = 'userinfo'
 
