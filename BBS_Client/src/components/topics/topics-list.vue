@@ -41,11 +41,11 @@
 <template>
     <div class="topics-list ov fl">
         <router-link to="/">
-            <img src="../../assets/images/topics.jpg" alt="LOGO">
+            <img :src="topicsContent.topicImg" :alt="topicsContent.topicTitle" :title="topicsContent.topicTitle">
         </router-link>
         <div class="topics-info fr">
-            <router-link to="/" class="topics-info-title" tag="h5">我的开源项目</router-link>
-            <span class="topics-info-follow">{{follower}} 关注</span>
+            <router-link to="/" :title="topicsContent.topicTitle" class="topics-info-title" tag="h5">{{topicsContent.topicName}}</router-link>
+            <span class="topics-info-follow">{{topicsContent.topicSum}} 关注</span>
             <button class="top-info-button" @click="follow"  v-if="!isFollow"> + 关注 </button>
             <button class="top-info-button" @click="follow"  v-else> 已关注 </button>
         </div>
@@ -53,6 +53,9 @@
 </template>
 <script>
 export default {
+    props:{
+        topicsContent:Object
+    },
     data(){
         return{
             isFollow:true,

@@ -83,7 +83,15 @@ router.post('/register', (req, res) => {
     let sql = `INSERT INTO ${USERINFO_TABLE}(userID,userName,password,phone,email,createAt) VALUES(?,?,?,?,?,?) `
     let params = [userID, userInfo.userName, userInfo.password, userInfo.phone, userInfo.email, createAt]
 
-    db.add(sql, params, res);
+    db.add(sql, params, (err, result) => {
+        if (err) {
+            console.log(err)
+            jsonResult(res)
+            return false
+        } else {
+            jsonResult(res, result)
+        }
+    });
 })
 
 

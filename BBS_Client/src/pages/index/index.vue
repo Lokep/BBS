@@ -33,7 +33,12 @@ export default {
 
     },
     mounted(){
-
+        let listAPI =`/api/articleList`
+        this.$axios.post(listAPI).then(res=>{
+            console.log(res)
+        }).catch(err=>{
+            console.log(err)
+        })
     },
     watch:{
 

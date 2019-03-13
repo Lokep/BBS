@@ -72,6 +72,14 @@
         width: 250px;
         height: 40px;
     }
+    .el-button span{
+        display: inline;
+    }
+    .editor-tag-list{
+        height: 40px;
+        min-width: 415px;
+        max-width: 555px;
+    }
 </style>
 <template>
     <div class="editor">
@@ -108,7 +116,10 @@
                 </div>
             </el-form-item>
             <el-form-item label="添加标签" class="editor-tag">
-                <el-tag v-for="(k,i) in offerTags" :key = 'k.topicName' :index = 'i' :type='tagType[i]' @click="selectTag(k)">{{k.topicName}}</el-tag>
+                <div class="editor-tag-list inline ov">
+                    <el-tag v-for="(k,i) in offerTags" :key = 'k.topicName' :index = 'i' :type='tagType[i]' :title="k.topicTitle" @click="selectTag(k)">{{k.topicName}}</el-tag>
+                </div>
+                <el-button @click="changeTags" class="fr" size="small" type="primary" icon="el-icon-refresh">换一换</el-button>
             </el-form-item>
             <el-form-item label="文章内容" class="editor-content" prop="content">
                 <el-input
@@ -156,17 +167,7 @@ export default {
         }
     },
     mounted(){
-        let tagAPI = '/api/editor/tags'
-        let that =this
-        this.$axios.post(tagAPI).then(res=>{
-            /* 
-            * topicName topicID
-            */
-            that.offerTags=res.data            
-            console.log(that.offerTags)
-        }).catch(err=>{
-            console.log(err)
-        })
+        this.changeTags()
     },
     methods: { 
         selectTag(e){
@@ -196,6 +197,20 @@ export default {
         },
         handleProgress(event, file, fileList){
             
+        },
+        changeTags(){
+            this.offerTags=[]
+            let tagAPI = '/api/editor/tags'
+            let that =this
+            this.$axios.post(tagAPI).then(res=>{
+                /* 
+                * topicName topicID
+                */
+                that.offerTags=res.data            
+                console.log(that.offerTags)
+            }).catch(err=>{
+                console.log(err)
+            })
         },
         handleChange(file, fileList){
             this.dialogImageUrl = file.url
