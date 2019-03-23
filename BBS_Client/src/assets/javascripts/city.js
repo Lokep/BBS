@@ -3,94 +3,94 @@ module.exports = {
         value: null,
         label: '全部城市'
     }, {
-        value: '1',
+        value: '大连',
         label: '大连'
     }, {
-        value: '2',
+        value: '北京',
         label: '北京'
     }, {
-        value: '3',
+        value: '天津',
         label: '天津'
     }, {
-        value: '4',
+        value: '上海',
         label: '上海'
     }, {
-        value: '5',
+        value: '南京',
         label: '南京'
     }, {
-        value: '6',
+        value: '苏州',
         label: '苏州'
     }, {
-        value: '7',
+        value: '南通',
         label: '南通'
     }, {
-        value: '8',
+        value: '杭州',
         label: '杭州'
     }, {
-        value: '9',
+        value: '合肥',
         label: '合肥'
     }, {
-        value: '10',
+        value: '福州',
         label: '福州'
     }, {
-        value: '11',
+        value: '厦门',
         label: '厦门'
     }, {
-        value: '12',
+        value: '漳州',
         label: '漳州'
     }, {
-        value: '13',
+        value: '济南',
         label: '济南'
     }, {
-        value: '14',
+        value: '青岛',
         label: '青岛'
     }, {
-        value: '15',
+        value: '烟台',
         label: '烟台'
     }, {
-        value: '16',
+        value: '郑州',
         label: '郑州'
     }, {
-        value: '17',
+        value: '洛阳',
         label: '洛阳'
     }, {
-        value: '18',
+        value: '武汉',
         label: '武汉'
     }, {
-        value: '19',
+        value: '长沙',
         label: '长沙'
     }, {
-        value: '20',
+        value: '广州',
         label: '广州'
     }, {
-        value: '21',
+        value: '深圳',
         label: '深圳'
     }, {
-        value: '22',
+        value: '珠海',
         label: '珠海'
     }, {
-        value: '23',
+        value: '重庆',
         label: '重庆'
     }, {
-        value: '24',
+        value: '成都',
         label: '成都'
     }, {
-        value: '25',
+        value: '贵阳',
         label: '贵阳'
     }, {
-        value: '26',
+        value: '西安',
         label: '西安'
     }, {
-        value: '27',
+        value: '台北',
         label: '台北'
     }, {
-        value: '28',
+        value: '香港',
         label: '香港'
     }, {
-        value: '29',
+        value: '海外',
         label: '海外'
     }, {
-        value: '30',
+        value: '其他',
         label: '其它'
     }]
 }

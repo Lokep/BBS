@@ -13,10 +13,12 @@ const TOPIC_TABLE = 'topics'
 const ARTICLE_IMAGE_TABLE = 'articleImg'
 
 const uploadPath = './public/images/' //路径是基于当前项目而非当前文件
+const staticPath = '/public/images/'
 const upload = multer({ dest: uploadPath, limits: 65535 });
 
 const date = new Date()
 const stamp = Date.parse(date).toString()
+
 
 router.post('/tags', (req, res, next) => {
     let tagLimit = 5
@@ -56,10 +58,12 @@ router.post('/content', (req, res, next) => {
 router.post('/images', upload.single('image'), (req, res, next) => {
     //文件上传
 
-    let oldName = req.file.path
-    let newName = uploadPath + stamp + req.file.originalname.toString().slice(-4)
+    let oldPath = req.file.path
+    let newPath = uploadPath + stamp + req.file.originalname.toString().slice(-4)
+    let newName = stamp + req.file.originalname.toString().slice(-4)
     let createAt = date.toLocaleTimeString()
-    fs.rename(oldName, newName, (err) => {
+    console.log(req.file)
+    fs.rename(oldPath, uploadPath + newName, (err) => {
         if (err) {
             console.log(err);
         } else {
@@ -68,7 +72,7 @@ router.post('/images', upload.single('image'), (req, res, next) => {
 
     })
     let sql = `INSERT INTO ${ARTICLE_IMAGE_TABLE} (aid,id,path,name,createAt) VALUES(?,?,?,?,?)`
-    let params = [stamp, stamp, uploadPath, newName, createAt]
+    let params = [stamp, stamp, staticPath, newName, createAt]
     db.add(sql, params, (err, result) => {
         if (err) {
             jsonResult(res)

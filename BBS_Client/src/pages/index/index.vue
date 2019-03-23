@@ -2,7 +2,9 @@
     .lists{
         background-color: #fff;
         width: 694px;
-        min-height: 100vh;
+        /* padding: 0 0 20px; */
+        border-radius: 4px;
+        /* min-height: 100vh; */
     }
     
 </style>
@@ -22,7 +24,7 @@ export default {
     
     data(){
         return{
-            listSum:[{a:1},{a:1},{a:1},{a:1},{a:1}]
+            listSum:[]
         }
     },
     components:{
@@ -36,6 +38,7 @@ export default {
         let listAPI =`/api/articleList`
         this.$axios.post(listAPI).then(res=>{
             console.log(res)
+            this.listSum = res.data
         }).catch(err=>{
             console.log(err)
         })

@@ -1,15 +1,13 @@
-const superagent = require('superagent');
 const cheerio = require('cheerio');
 const request = require('request');
 
 const db = require('../model/mysql.operation')
-const jsonResult = require('../model/jsonResult')
 
 const TOPICS_TABLE = 'topics'
-const tagetURL = 'https://juejin.im/topics'
+const targetURL = 'https://juejin.im/topics'
 const date = new Date()
 
-request(tagetURL, (err, res, body) => {
+request(targetURL, (err, res, body) => {
     if (!err && res.statusCode == 200) {
 
         let $ = cheerio.load(body);
@@ -35,7 +33,7 @@ request(tagetURL, (err, res, body) => {
                 db.add(sql, params, (err, result) => {
                     if (err) {
                         console.log({ err: 'failed' })
-                        continue
+                            // continue
                     } else {
                         console.log({ msg: 'success' })
                     }

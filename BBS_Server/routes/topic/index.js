@@ -7,7 +7,9 @@ const TOPICS_TABLE = 'topics'
 
 router.post('/list', (req, res, next) => {
     let topicsLimit = 40
-    let sql = `select * from ${TOPICS_TABLE} limit ${topicsLimit} `
+        // let sql = `select * from ${TOPICS_TABLE} limit ${topicsLimit} `
+    let sql = ` select t.*,(case when u.isFollow is null then 0 else 1 end ) isFollow from topics t LEFT JOIN (select topicID as isFollow from userfollows) u on t.topicID=u.isFollow order by rand() limit ${topicsLimit}`
+
     db.query(sql, '', (err, result) => {
         if (err) {
             console.log(err)
@@ -17,5 +19,6 @@ router.post('/list', (req, res, next) => {
         }
     })
 })
+
 
 module.exports = router;

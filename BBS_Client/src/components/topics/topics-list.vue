@@ -46,26 +46,42 @@
         <div class="topics-info fr">
             <router-link to="/" :title="topicsContent.topicTitle" class="topics-info-title" tag="h5">{{topicsContent.topicName}}</router-link>
             <span class="topics-info-follow">{{topicsContent.topicSum}} 关注</span>
-            <button class="top-info-button" @click="follow"  v-if="!isFollow"> + 关注 </button>
+            <button class="top-info-button" @click="follow"  v-if="!topicsContent.isFollow"> + 关注 </button>
             <button class="top-info-button" @click="follow"  v-else> 已关注 </button>
         </div>
     </div>
 </template>
 <script>
+
+import STORAGE from '../../assets/javascripts/storage.js'
+
 export default {
     props:{
         topicsContent:Object
     },
     data(){
         return{
-            isFollow:true,
+            isFollow:false,
             follower:3316
         }
     },
     methods:{
         follow(e){
-            this.isFollow?this.follower--:this.follower++
-            this.isFollow = !this.isFollow
+            
+            this.topicsContent.isFollow?this.topicsContent.topicSum--:this.topicsContent.topicSum++
+            this.topicsContent.isFollow = !this.topicsContent.isFollow
+            let followAPI = '/api/follow/click'
+            let params={
+                userID:STORAGE.GET('userInfo')[0].userID,
+                topicID:this.topicsContent.topicID,
+                operation:this.topicsContent.isFollow,
+                topicSum:this.topicsContent.topicSum
+            }
+            this.$axios.post(followAPI,params).then(res=>{
+                console.log(res)
+            }).catch(err=>{
+                console.log(err)
+            })
         }
     },
 }

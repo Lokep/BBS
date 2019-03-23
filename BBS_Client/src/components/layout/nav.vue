@@ -19,9 +19,9 @@
   height: 45px;
   margin: 5.5px 0;
 }
-.el-menu--horizontal>.el-menu-item.is-active{
+/* .el-menu--horizontal>.el-menu-item.is-active{
     border-bottom:3px solid #009a61;
-}
+} */
 .el-menu{
     border-right: 0;
     float: left;
@@ -86,7 +86,7 @@
 <template>
 <div class="nav">
     <div class="container-width ov">
-        <img src="../../assets/images/logo.jpg" alt="LOGO" class="logo">
+        <!-- <img src="../../assets/images/logo.jpg" alt="LOGO" class="logo"> -->
             <!-- :default-active="activeIndex" -->
         <el-menu
             :default-active="$route.path"

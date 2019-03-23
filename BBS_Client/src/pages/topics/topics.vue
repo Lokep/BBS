@@ -5,7 +5,7 @@
     <div class="topics ov">
         <h4 class="common-title">全部话题</h4>
         <div class="topics-lists ov">
-            <TopicsList v-for="(k,i) in topicsList" :key="i" :index="i" :topicsContent="k"></TopicsList>
+            <TopicsList v-for="(k,i) in topicsList" :key="i" :index="i" :topicsContent="k" ></TopicsList>
         </div>
     </div>
 </template>

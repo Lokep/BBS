@@ -17,7 +17,7 @@
     <div class="explore">
         <div class="explore-title ov">
             <h4 class="common-title fl">最新活动</h4>
-            <el-select v-model="typeValue" placeholder="全部类型" size="small" @change='selectActivity'>
+            <el-select v-model="type" placeholder="全部类型" size="small" @change='selectActivity'>
                 <el-option
                 v-for="item in activityType"
                 :key="item.value"
@@ -25,7 +25,7 @@
                 :value="item.value">
                 </el-option>
             </el-select>
-            <el-select v-model="cityValue" placeholder="全部城市" size="small" @change='selectActivity' >
+            <el-select v-model="city" placeholder="全部城市" size="small" @change='selectActivity' >
                 <el-option
                 v-for="item in activityCity"
                 :key="item.value"
@@ -50,18 +50,18 @@ export default {
     data(){
         return {
             activityType: [{
-                value: null,
+                value: '全国',
                 label: '全部类型'
             },  {
-                value: '0',
+                value: '北京',
                 label: '线上活动'
             }, {
-                value: '1',
+                value: '杭州',
                 label: '线下活动'
             }],
             activityCity:city,
-            typeValue: '',
-            cityValue:'',
+            type: '',
+            city:'',
             activityList:[]
         }
     },
@@ -73,8 +73,8 @@ export default {
         selectActivity(){
             let exploreApi = '/api/explore/activity'
             let params = {
-                type:this.typeValue,
-                cityCode:this.cityValue
+                type:this.type,
+                city:this.city
             }
             console.log(params)
             this.$axios.post(exploreApi,params).then(res=>{
