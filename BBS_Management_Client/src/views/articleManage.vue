@@ -3,11 +3,12 @@
     <div class="search_box">
       <el-input
         class="search_input"
-        v-model="search_cont"
+        v-model.trim="condition"
         placeholder="请输入文章标题、作者"
         size="medium"
+        @keyup.enter.native="onSearch"
       ></el-input>
-      <el-button type="primary" size="small">搜索</el-button>
+      <el-button type="primary" size="small" @click="onSearch">搜索</el-button>
     </div>
     <div class="article_list_box">
       <el-table :data="articleList" border style="width: 100%">
@@ -35,21 +36,48 @@
 export default {
   data() {
     return {
-      search_cont: "",
-      articleList: [
-        {
-          createAt: "2019-02-28",
-          author: "姬和不如",
-          title: "听说用欧阳娜娜做头像可以脱单？",
-          articleType: "娱乐新闻",
-          agrees: 2345,
-          disagrees: 123,
-          collects: 444,
-          noInterests: 32,
-          accustion: 12
-        }
-      ]
+      condition: "",
+      articleList: []
     };
+  },
+  mounted() {
+    if(this.$route.query.username) {
+      this.viewAuthorArticles(this.$route.query.username)
+    } else {
+      this.getArticleList()
+    }
+  },
+  methods: {
+    getArticleList() {
+      this.$axios.get("/articles").then(res => {
+        if(res.data.code === "200") {
+          this.articleList = res.data.result
+        }
+      })
+    },
+    onSearch() {
+      this.$axios.get("/articles", {
+        params: {
+          condition: this.condition
+        }
+      }).then(res => {
+        if(res.data.code === "200") {
+          this.articleList = res.data.result
+          this.condition = ""
+        }
+      })
+    },
+    viewAuthorArticles(author) {
+      this.$axios.get("/articles/author_articles", {
+        params: {
+          author: author
+        }
+      }).then(res => {
+        if(res.data.code === "200") {
+          this.articleList = res.data.result
+        }
+      })
+    }
   }
 };
 </script>
