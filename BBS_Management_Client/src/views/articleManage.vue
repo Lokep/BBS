@@ -12,7 +12,11 @@
     </div>
     <div class="article_list_box">
       <el-table :data="articleList" border style="width: 100%">
-        <el-table-column sortable align="center" header-align="center" prop="createAt" label="发布日期"></el-table-column>
+        <el-table-column sortable align="center" header-align="center" prop="createAt" label="发布日期">
+          <template slot-scope="scope">
+            <span>{{formatDate(scope.row.createAt, "yy-MM-dd hh:mm:ss")}}</span>
+          </template>
+        </el-table-column>
         <el-table-column sortable align="center" header-align="center" prop="author" label="作者"></el-table-column>
         <el-table-column align="center" header-align="center" prop="title" label="文章标题"></el-table-column>
         <el-table-column sortable align="center" header-align="center" prop="articleType" label="文章类型"></el-table-column>
@@ -33,6 +37,7 @@
 </template>
 
 <script>
+  import {formatDate} from "../utils/formatDate"
 export default {
   data() {
     return {
@@ -48,6 +53,7 @@ export default {
     }
   },
   methods: {
+    formatDate,
     getArticleList() {
       this.$axios.get("/articles").then(res => {
         if(res.data.code === "200") {

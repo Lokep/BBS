@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <v-header></v-header>
+    <v-header :admin="admin"></v-header>
     <v-sidebar></v-sidebar>
     <div class="content-box">
       <div class="content">
@@ -22,12 +22,18 @@ export default {
   components: {
     vHeader,
     vSidebar,
-    vTags
+    // vTags
   },
   data() {
     return {
-      tagsList: []
+      tagsList: [],
+      admin: ""
     };
+  },
+  mounted() {
+    let user = localStorage.getItem("user");
+    user = JSON.parse(user);
+    this.admin = user.admin
   }
 };
 </script>

@@ -89,7 +89,6 @@ export default {
       cartonIndex: 0,
       loginForm: {
         account: "",
-        accountType: "",
         password: ""
       },
       loginRules: {
@@ -100,9 +99,9 @@ export default {
             trigger: "blur"
           },
           {
-            pattern: /^[a-zA-Z0-9_]{6,16}$/,
+            pattern: /^[a-zA-Z0-9_]{4,12}$/,
             trigger: "blur",
-            message: "用户名为6-16位，包含字母、数字、下划线"
+            message: "用户名为4-12位，包含字母、数字、下划线"
           }
         ],
         password: [
@@ -112,9 +111,9 @@ export default {
             trigger: "blur"
           },
           {
-            min: 6,
-            max: 18,
-            message: "密码在6-18位之间"
+            min: 4,
+            max: 16,
+            message: "密码在4-16位之间"
           }
         ]
       }
@@ -133,25 +132,30 @@ export default {
   mounted() {},
   methods: {
     login(formName) {
-      let that = this;
-      let loginAPI = "/api/users/login";
-
       this.$refs[formName].validate(valid => {
         if (valid) {
-          localStorage.setItem("USERINFO", this.loginForm);
-          // STORAGE.SET(res.data)
-          this.$router.push("/");
-          // that.loginForm.accountType = that.regForPhone.test(that.loginForm.account)?'phone':'email'
-          // console.log(that.loginForm)
-          // that.$axios.post(loginAPI,that.loginForm).then(res=>{
-          //     if(res.data.length){
-          //         STORAGE.SET(res.data)
-          //         this.$router.push({path:'/',params:res.data})
-          //     }
-
-          // }).catch(err=>{
-          //     console.log(err)
-          // })
+          this.$axios.post("/admins/login", {
+            admin: this.loginForm.account,
+            password: this.loginForm.password
+          }).then(res => {
+            if(res.data.code === "200") {
+              this.$message({
+                type: "success",
+                message: res.data.message
+              });
+              let result = res.data.result[0];
+              result.date = Date.now()
+              let user = JSON.stringify(result)
+              localStorage.setItem("user", user)
+              this.$store.commit("saveUserInfo", result)
+              this.$router.push("/");
+            } else {
+              this.$message({
+                type: "error",
+                message: res.data.message
+              })
+            }
+          })
         } else {
           console.log("error submit!!");
           return false;

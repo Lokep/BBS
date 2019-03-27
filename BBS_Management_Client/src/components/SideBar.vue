@@ -40,32 +40,38 @@ export default {
         {
           icon: "el-icon-news",
           index: "userManage",
-          title: "用户管理"
+          title: "用户管理",
+          hasPower: false
         },
         {
           icon: "el-icon-document",
           index: "articleManage",
-          title: "文章管理"
+          title: "文章管理",
+          hasPower: false
         },
         {
           icon: "el-icon-date",
           index: "activityManage",
-          title: "活动管理"
+          title: "活动管理",
+          hasPower: false
         },
         {
           icon: "el-icon-service",
           index: "topicManage",
-          title: "话题管理"
+          title: "话题管理",
+          hasPower: false
         },
         {
           icon: "el-icon-tickets",
           index: "dataAnalysis",
-          title: "数据分析"
+          title: "数据分析",
+          hasPower: false
         },
         {
           icon: "el-icon-mobile-phone",
           index: "adminManage",
-          title: "管理员管理"
+          title: "管理员管理",
+          hasPower: true
         }
       ]
     };

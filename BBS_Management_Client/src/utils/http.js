@@ -1,6 +1,7 @@
 // axios请求方式
 
 import axios from 'axios';
+import qs from "qs"
 
 //请求拦截器
 axios.interceptors.request.use(
@@ -8,6 +9,7 @@ axios.interceptors.request.use(
     config.headers = {
       'Content-Type': 'application/x-www-form-urlencoded'
     };
+    config.data = qs.stringify(config.data)
     return config
   },
   err => {

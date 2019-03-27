@@ -16,12 +16,12 @@
       </div>
       <el-dropdown class="user_name" placement="bottom-start">
         <span class="el-dropdown-link">
-          admin
+          {{admin}}
           <i class="el-icon-arrow-down el-icon--right"></i>
         </span>
         <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item>修改密码</el-dropdown-item>
-          <el-dropdown-item>退出登录</el-dropdown-item>
+          <el-dropdown-item><span @click="updatePwd">修改密码</span></el-dropdown-item>
+          <el-dropdown-item><span @click="logout">退出登录</span></el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
     </div>
@@ -30,12 +30,32 @@
 
 <script>
 export default {
+  props: ["admin"],
   data() {
     return {
       message: true
     };
+  },
+  methods: {
+    logout() {
+      localStorage.setItem("user", "");
+      this.$store.commit("delUserInfo", "");
+      this.$message({
+        type: "success",
+        message: "退出登录成功"
+      });
+      this.$router.push("/login")
+    },
+    updatePwd() {
+      let user = localStorage.getItem("user");
+      user = JSON.parse(user);
+      this.$router.push({
+        name: "修改信息",
+        params: user
+      })
+    }
   }
-};
+  };
 </script>
 
 <style scoped>
