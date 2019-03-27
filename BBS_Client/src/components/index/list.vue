@@ -96,7 +96,7 @@
             <li class="list-tools-nointerests">不感兴趣{{p.noInterests}}</li>
             <li class="list-tools-accusation">举报{{p.accusation}}</li>
         </ul>
-        <Comment></Comment>
+        <Comment :acceptComment=p></Comment>
         <!-- 评论 -->
     </div>
 
@@ -120,16 +120,16 @@ export default {
     methods:{
         
         showComment(){
-            let showCommentAPI = '/api/getCommentList'
-            let params={
-                articleID:this.p.articleID
-            }
-            console.log(params)
-            this.$axios.post(showCommentAPI,params).then(res=>{
-                console.log(res)
-            }).catch(err=>{
-                console.log(err)
-            })
+            // let showCommentAPI = '/api/getCommentList'
+            // let params={
+            //     articleID:this.p.articleID
+            // }
+            // console.log(params)
+            // this.$axios.post(showCommentAPI,params).then(res=>{
+            //     console.log(res)
+            // }).catch(err=>{
+            //     console.log(err)
+            // })
         }
     },
     mounted(){
