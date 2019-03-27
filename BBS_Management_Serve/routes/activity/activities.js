@@ -8,10 +8,10 @@ const EXPLORE_TABLE = 'explore';
 
 //新增活动  接口
 router.post('/', async (req, res, next) => {
-    let createAt = new Date();
     let message = req.body;
-    let sql = `INSERT INTO ${EXPLORE_TABLE}(id, title,time,city,cityCode,imgSRc, link, type, createAt) VALUES(0,?,?,?,?,?,?,?,?) `;
-    let params = [message.title, message.time, message.city, message.cityCode, message.imgSRc, message.link, message.type, createAt]
+    // message = JSON.parse(message)
+    let sql = `INSERT INTO ${EXPLORE_TABLE}(id, title,time,city,cityCode,imgSrc, link, type) VALUES(?,?,?,?,?,?,?,?) `;
+    let params = [0, message.title, message.time, message.city, message.cityCode, message.imgSrc, message.link, message.type]
     let  result = await db.query(sql, params);
     if(result) {
         res.send({code: "200", message: "新增活动成功", result: result})
@@ -24,27 +24,16 @@ router.post('/', async (req, res, next) => {
 router.get("/", async (req, res, next) => {
     let sql = `SELECT * FROM ${EXPLORE_TABLE}`, params = [], result;
     let condition = req.query.condition;
+    console.log(condition)
     if(condition) {
-        sql += " WHERE phone LIKE ? OR email LIKE ? OR userName LIKE ?";
-        params = ["%" + condition + "%", "%" + condition + "%", "%" + condition + "%"];
-        result = await db.query(sql, params);
-    } else {
-        result = await db.query(sql, params)
+        sql += " WHERE title LIKE ?";
+        params = ["%" + condition + "%"];
     }
-    res.send({code: "200", message: "查询成功", result: result})
-});
-
-// 更改上架状态 接口
-router.post("/uppershelf", async (req, res, next) => {
-    let sql = `UPDATE ${EXPLORE_TABLE} SET state = ? WHERE id = ?`,
-        state = req.body.state,
-        id = req.body.id,
-        params = [state, id],
-        result = await db.query(sql, params);
-    if(result) {
-        res.send({code: "200", message: "修改成功", result: result})
+    result = await db.query(sql, params);
+    if(result.length !== 0) {
+        res.send({code: "200", message: "查询成功", result: result})
     } else {
-        res.send({code: "404", message: "参数错误，没有相关信息"})
+        res.send({code: "404", message: "未查询到相关信息"})
     }
 });
 
