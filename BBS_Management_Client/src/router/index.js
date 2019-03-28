@@ -90,15 +90,22 @@ const router = new Router({
       redirect: '/404'
     }
   ]
-})
+});
 
 router.beforeEach((to, from, next) => {
   if (to.matched.some(r => r.meta.requireAuth)) {
     let data = localStorage.getItem("user");
-    if (data) {
-      data = JSON.parse(data)
-      if (Date.now() - data.date < 2 * 60 * 60 * 1000) {
-        if(to.name === "管理员管理") {
+    if(!data) {
+      next({
+        path: '/login',
+        query: {
+          redirect: to.fullPath
+        }
+      })
+    } else {
+      data = JSON.parse(data);
+      if (data && Date.now() - data.date <= 2 * 60 * 60 * 1000) {
+      if(to.name === "管理员管理") {
           if(data.power == 1) {
             next();
           } else {
@@ -107,16 +114,17 @@ router.beforeEach((to, from, next) => {
             })
           }
         } else {
-          next();
+          next()
         }
+      }else {
+        localStorage.setItem("user", "")
+        next({
+          path: '/login',
+          query: {
+            redirect: to.fullPath
+          }
+        })
       }
-    }else {
-      next({
-        path: '/login',
-        query: {
-          redirect: to.fullPath
-        }
-      })
     }
   } else {
     next();

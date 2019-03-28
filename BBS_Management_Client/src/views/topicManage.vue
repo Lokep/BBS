@@ -28,6 +28,7 @@
               <img width="50" :src="scope.row.topicImg" alt="">
             </template>
           </el-table-column>
+          <el-table-column align="center" header-align="center" prop="topicSum" label="话题关注人数" width="160"></el-table-column>
           <el-table-column align="center" header-align="center" label="Action" width="120">
             <template slot-scope="scope">
               <el-button type="danger" size="small" @click="delTopic(scope.row, scope.$index)">删除</el-button>

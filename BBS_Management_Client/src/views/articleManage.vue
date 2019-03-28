@@ -18,17 +18,15 @@
           </template>
         </el-table-column>
         <el-table-column sortable align="center" header-align="center" prop="author" label="作者"></el-table-column>
-        <el-table-column align="center" header-align="center" prop="title" label="文章标题"></el-table-column>
-        <el-table-column sortable align="center" header-align="center" prop="articleType" label="文章类型"></el-table-column>
+        <el-table-column align="center" header-align="center" prop="title" label="文章标题" width="200"></el-table-column>
         <el-table-column sortable align="center" header-align="center" prop="agrees" label="点赞数"></el-table-column>
         <el-table-column align="center" header-align="center" prop="disagrees" label="反对数"></el-table-column>
         <el-table-column align="center" header-align="center" prop="collects" label="收藏数"></el-table-column>
         <el-table-column align="center" header-align="center" prop="noInterests" label="不感兴趣"></el-table-column>
-        <el-table-column align="center" header-align="center" prop="accustion" label="举报"></el-table-column>
-        <el-table-column align="center" header-align="center" label="Action" width="150">
+        <el-table-column align="center" header-align="center" prop="accusation" label="举报"></el-table-column>
+        <el-table-column align="center" header-align="center" label="Action" width="100">
           <template slot-scope="scope">
-            <el-button type="primary" size="small">审核</el-button>
-            <el-button type="danger" size="small">删除</el-button>
+            <el-button type="danger" size="small" @click="delArticle(scope.row, scope.$index)">删除</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -83,6 +81,29 @@ export default {
           this.articleList = res.data.result
         }
       })
+    },
+    delArticle(row, index) {
+      this.$confirm('确认删除此文章?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        this.$axios.get("/articles/del_article", {params: {id: row.id}})
+          .then(res => {
+            if(res.data.code === "200") {
+              this.$message({
+                type: "success",
+                message: res.data.message
+              })
+              this.articleList.splice(index, 1)
+            }
+          })
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '已取消删除'
+        });
+      });
     }
   }
 };
