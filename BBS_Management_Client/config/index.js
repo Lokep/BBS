@@ -10,7 +10,7 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {
+    proxyTable: { // 代理表， 解决跨域问题
       '/api': {
         target:'http://localhost:3000',
         changeOrigin:true,

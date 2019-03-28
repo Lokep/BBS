@@ -45,6 +45,7 @@ export default {
     this.getUserList()
   },
   methods: {
+    // 获取所有的用户
     getUserList() {
       this.$axios.get("/users").then(res => {
         if(res.data.code === "200") {
@@ -52,6 +53,7 @@ export default {
         }
       })
     },
+    // 条件查询
     onSearch() {
       this.$axios.get("/users", {
         params: {
@@ -64,12 +66,14 @@ export default {
         }
       })
     },
+    // 查询用户名下的所有文章
     viewDetail(row) {
       this.$router.push({
         path: "/articleManage",
         query: {username: row.userName}
       })
     },
+    // 冻结用户
     frozen(row, index) {
       this.$confirm('确认'+ (row.state === "0" ? "冻结" : "解冻") +'此管理员?', '提示', {
         confirmButtonText: '确定',
@@ -84,7 +88,6 @@ export default {
                 message: res.data.message
               });
               this.getUserList()
-              // this.adminList.splice(index, 1)
             }
           })
       }).catch(() => {
@@ -94,6 +97,7 @@ export default {
         });
       });
     },
+    // 注销用户
     logoff(row, index) {
       this.$confirm('确认注销此用户?', '提示', {
         confirmButtonText: '确定',

@@ -2,7 +2,6 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import Login from '@/views/Login';
 import Home from '@/views/Home';
-import store from  '../vuex/store'
 
 Vue.use(Router)
 
@@ -92,10 +91,12 @@ const router = new Router({
   ]
 });
 
+// 路由守卫,每次路由跳转都会执行,用来判断是否登录
 router.beforeEach((to, from, next) => {
   if (to.matched.some(r => r.meta.requireAuth)) {
     let data = localStorage.getItem("user");
-    if(!data) {
+    // 不存在data,跳转登录页
+    if (!data) {
       next({
         path: '/login',
         query: {
@@ -103,10 +104,13 @@ router.beforeEach((to, from, next) => {
         }
       })
     } else {
+      // 否则解析data
       data = JSON.parse(data);
+      // 判断locastorage是否过时
       if (data && Date.now() - data.date <= 2 * 60 * 60 * 1000) {
-      if(to.name === "管理员管理") {
-          if(data.power == 1) {
+        // 管理员页面需要权限进入
+        if (to.name === "管理员管理") {
+          if (data.power == 1) {
             next();
           } else {
             next({
@@ -116,8 +120,9 @@ router.beforeEach((to, from, next) => {
         } else {
           next()
         }
-      }else {
-        localStorage.setItem("user", "")
+      } else {
+        // 清空locastorage, 跳转登录页
+        localStorage.setItem("user", "");
         next({
           path: '/login',
           query: {
@@ -129,7 +134,6 @@ router.beforeEach((to, from, next) => {
   } else {
     next();
   }
-})
-
+});
 
 export default router;

@@ -35,6 +35,7 @@
 </template>
 
 <script>
+  // 日期格式化工具
   import {formatDate} from "../utils/formatDate"
 export default {
   data() {
@@ -44,6 +45,7 @@ export default {
     };
   },
   mounted() {
+    // 判断是从用户列表进入还是导航进入
     if(this.$route.query.username) {
       this.viewAuthorArticles(this.$route.query.username)
     } else {
@@ -52,6 +54,7 @@ export default {
   },
   methods: {
     formatDate,
+    // 获取文章列表
     getArticleList() {
       this.$axios.get("/articles").then(res => {
         if(res.data.code === "200") {
@@ -59,6 +62,7 @@ export default {
         }
       })
     },
+    // 条件搜索
     onSearch() {
       this.$axios.get("/articles", {
         params: {
@@ -71,6 +75,7 @@ export default {
         }
       })
     },
+    // 查看用户名下的文章
     viewAuthorArticles(author) {
       this.$axios.get("/articles/author_articles", {
         params: {
@@ -82,6 +87,7 @@ export default {
         }
       })
     },
+    // 删除文章
     delArticle(row, index) {
       this.$confirm('确认删除此文章?', '提示', {
         confirmButtonText: '确定',

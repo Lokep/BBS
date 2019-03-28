@@ -46,16 +46,18 @@
   export default {
     data() {
       return {
-        search_cont: "",
-        activityList: []
+        search_cont: "", // 搜索条件
+        activityList: [] // 活动列表
       };
     },
     methods: {
+      // 穿件活动
       createActivity() {
         this.$router.push({
           name: "活动管理"
         })
       },
+      // 获取活动列表
       getActivityList() {
         this.$axios.get("/activities")
           .then(res => {
@@ -64,6 +66,7 @@
             }
           })
       },
+      // 条件搜索
       onSearch() {
         this.$axios.get("/activities", {params: {condition: this.search_cont}})
           .then(res => {
@@ -71,7 +74,7 @@
               this.$message({
                 type: "success",
                 message: res.data.message
-              })
+              });
               this.activityList = res.data.result
               this.search_cont = ""
             } else {
@@ -82,6 +85,7 @@
             }
           })
       },
+      // 删除活动
       delActivity(row, index) {
         this.$confirm('确认删除此活动?', '提示', {
           confirmButtonText: '确定',
@@ -107,9 +111,11 @@
       }
     },
     mounted() {
+      // 挂载时，获取活动列表
       this.getActivityList()
     },
     watch: {
+      // 监听路由跳转，重新获取列表，用于创建后更新列表
       $route (to, from) {
         if(to.name === "活动管理") {
           this.getActivityList()

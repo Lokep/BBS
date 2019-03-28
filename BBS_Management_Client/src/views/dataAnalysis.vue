@@ -1,6 +1,8 @@
 <template>
   <div class="data_analysis">
+    <!--点赞数排行-->
     <div id="agreeRank" :style="{width: '1000px', height: '400px', background: '#fff', 'padding': '10px 30px'}"></div>
+    <!--话题关注人数排行-->
     <div id="topicSum"
          :style="{width: '1000px', height: '600px', background: '#fff', 'margin-top': '30px', 'padding': '30px'}"></div>
   </div>
@@ -17,10 +19,13 @@
       }
     },
     mounted() {
+      // 获取文章数据
       this.getArticlesData();
+      // 获取话题数据
       this.getTopicsData()
     },
     methods: {
+      // 绘画点赞数排行图表
       drawAgreeRank() {
         // 基于准备好的dom，初始化echarts实例
         let myChart = this.$echarts.init(document.getElementById('agreeRank'));
@@ -70,6 +75,7 @@
         await this.$axios.get("/articles").then(res => {
           if (res.data.code === "200") {
             let data = res.data.result;
+            // 获取的数据按照点赞数排序，并截取前十位
             data = data.sort(this.compare("agrees")).slice(0, 10).reverse();
             data.map((item, index, arr) => {
               this.titleList.push(item.title);
@@ -79,6 +85,7 @@
           }
         })
       },
+      // 绘画话题关注数排行图表
       drawTopicSum() {
         // 基于准备好的dom，初始化echarts实例
         let myChart = this.$echarts.init(document.getElementById('topicSum'));
@@ -146,6 +153,7 @@
         await this.$axios.get("/topics").then(res => {
           if (res.data.code === "200") {
             let data = res.data.result;
+            // 获取的数据按照关注数排序，并截取前二十位
             data = data.sort(this.compare("topicSum")).slice(0, 20);
             console.log(data)
             data.map((item, index, arr) => {
@@ -156,6 +164,7 @@
           }
         })
       },
+      // 数组排序方法
       compare(property) {
         return function (a, b) {
           var value1 = a[property];

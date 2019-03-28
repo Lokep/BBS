@@ -44,6 +44,7 @@
         this.getAdminList()
     },
     methods: {
+      // 获取管理员列表
       getAdminList() {
         this.$axios.get("/admins")
           .then(res => {
@@ -52,6 +53,7 @@
             }
           })
       },
+      // 条件搜索
       onSearch() {
         this.$axios.get("/admins", {params: {admin: this.search_cont}})
           .then(res => {
@@ -70,11 +72,13 @@
             }
           })
       },
+      // 添加管理员
       createAdmin() {
         this.$router.push({
           name: "添加管理员"
         })
       },
+      // 删除管理员
       delAdmin(row, index) {
         this.$confirm('确认删除此管理员?', '提示', {
           confirmButtonText: '确定',
@@ -100,6 +104,7 @@
       }
     },
     watch: {
+      // 监听路由跳转，用作添加管理员后的列表刷新
       $route (to, from) {
         if(to.name === "管理员管理") {
           this.getAdminList()

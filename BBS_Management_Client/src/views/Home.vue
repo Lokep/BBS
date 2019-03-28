@@ -17,20 +17,18 @@
 <script>
 import vHeader from "@/components/Header.vue";
 import vSidebar from "@/components/SideBar.vue";
-import vTags from "@/components/Tags.vue";
 export default {
   components: {
     vHeader,
-    vSidebar,
-    // vTags
+    vSidebar
   },
   data() {
     return {
-      tagsList: [],
       admin: ""
     };
   },
   mounted() {
+    // 获取用户信息，传给header组件
     let user = localStorage.getItem("user");
     user = JSON.parse(user);
     this.admin = user.admin

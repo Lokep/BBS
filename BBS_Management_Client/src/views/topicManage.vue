@@ -42,6 +42,7 @@
 </template>
 
 <script>
+  // 提起格式化工具
   import {formatDate} from "../utils/formatDate"
 
   export default {
@@ -54,9 +55,9 @@
     mounted() {
       this.getTopicsList()
     },
-    // mixins: [formatDate],
     methods: {
       formatDate,
+      // 获取话题列表
       getTopicsList() {
         this.$axios.get("/topics").then(res => {
           if (res.data.code === "200") {
@@ -64,6 +65,7 @@
           }
         })
       },
+      // 条件查询
       onSearch() {
         this.$axios.get("/topics", {
           params: {
@@ -76,11 +78,13 @@
           }
         })
       },
+      // 穿件话题
       createTopic() {
         this.$router.push({
           name: "创建话题"
         })
       },
+      // 删除话题
       delTopic(row, index) {
         this.$confirm('确认删除此话题?', '提示', {
           confirmButtonText: '确定',
@@ -106,6 +110,7 @@
       }
     },
     watch: {
+      // 监听路由变化，用作穿件话题后的列表更新
       $route (to, from) {
         if (to.name === "话题管理") {
           this.getTopicsList()

@@ -1,3 +1,4 @@
+<!--头部组件-->
 <template>
   <div class="header">
     <div class="logo">
@@ -30,25 +31,34 @@
 
 <script>
 export default {
-  props: ["admin"],
+  props: ["admin"], // 父组件传来的管理员名称
   data() {
     return {
       message: true
     };
   },
   methods: {
+    // 退出登录
     logout() {
+      // 清空localStorage
       localStorage.setItem("user", "");
+      // 清空vuex中的信息
       this.$store.commit("delUserInfo", "");
+      // 退出登录提示
       this.$message({
         type: "success",
         message: "退出登录成功"
       });
+      // 跳转登录页
       this.$router.push("/login")
     },
+    // 修改密码
     updatePwd() {
+      // 获取localStorage
       let user = localStorage.getItem("user");
+      // 解析suer
       user = JSON.parse(user);
+      // 进入修改密码页面
       this.$router.push({
         name: "修改信息",
         params: user

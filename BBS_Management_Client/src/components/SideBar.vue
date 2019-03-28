@@ -1,3 +1,4 @@
+<!--侧边导航组件-->
 <template>
   <div class="side_bar">
     <el-menu :default-active="onRoutes" router>
@@ -36,6 +37,7 @@
 export default {
   data() {
     return {
+      // 侧边栏的导航渲染数组
       items: [
         {
           icon: "el-icon-news",
