@@ -9,14 +9,15 @@ const EXPLORE_TABLE = 'explore';
 //新增活动  接口
 router.post('/', async (req, res, next) => {
     let message = req.body;
-    // message = JSON.parse(message)
+    // 新增活动sql语句
     let sql = `INSERT INTO ${EXPLORE_TABLE}(id, title,time,city,cityCode,imgSrc, link, type) VALUES(?,?,?,?,?,?,?,?) `;
     let params = [0, message.title, message.time, message.city, message.cityCode, message.imgSrc, message.link, message.type]
     let  result = await db.query(sql, params);
+    // 如果result存在，返回结果,不存在返回404
     if(result) {
         res.send({code: "200", message: "新增活动成功", result: result})
     } else {
-        res.send({code: "405", message: "添加失败"})
+        res.send({code: "404", message: "添加失败"})
     }
 });
 
@@ -30,6 +31,7 @@ router.get("/", async (req, res, next) => {
         params = ["%" + condition + "%"];
     }
     result = await db.query(sql, params);
+    // 如果result长度不为0，返回结果,不存在返回404
     if(result.length !== 0) {
         res.send({code: "200", message: "查询成功", result: result})
     } else {
@@ -43,8 +45,11 @@ router.get("/del_activity", async (req, res, next) => {
         id = req.query.id,
         params = [id],
         result = await db.query(sql, params);
+    // 如果result存在，返回结果,不存在返回404
     if (result) {
         res.send({code: "200", message: "删除成功", result: result})
+    } else {
+        res.send({code: "404", message: "未查询到相关信息"})
     }
 });
 
