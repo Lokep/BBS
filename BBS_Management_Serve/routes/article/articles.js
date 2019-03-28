@@ -29,20 +29,6 @@ router.get('/author_articles', async (req, res, next) => {
     res.send({code: "200", message: "查询成功", result: result})
 });
 
-// 审核文章 接口
-router.post("/checkup", async (req, res, next) => {
-    let sql = `UPDATE ${ARTICLE_TABLE} SET state = ? WHERE id = ?`,
-        state = req.body.state,
-        id = req.body.id,
-        params = [state, id],
-        result = await db.query(sql, params);
-    if(result) {
-        res.send({code: "200", message: "修改成功", result: result})
-    } else {
-        res.send({code: "404", message: "参数错误，没有相关信息"})
-    }
-});
-
 // 删除文章  接口
 router.get("/del_article", async (req, res, next) => {
     let sql = `DELETE FROM ${ARTICLE_TABLE} WHERE id = ?`,
