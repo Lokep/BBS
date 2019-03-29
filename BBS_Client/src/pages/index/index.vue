@@ -37,7 +37,7 @@ export default {
     mounted(){
         let listAPI =`/api/articleList`
         this.$axios.post(listAPI).then(res=>{
-            console.log(res)
+            // console.log(res)
             this.listSum = res.data
         }).catch(err=>{
             console.log(err)

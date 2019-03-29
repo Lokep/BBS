@@ -92,11 +92,13 @@
             <li class="list-tools-agree el-icon-caret-top">赞同 {{p.agrees}}</li>
             <li class="list-tools-disagree el-icon-caret-bottom">{{p.disagrees}}</li>
             <li class="list-tools-comment" @click="showComment">添加评论{{p.comments}}</li>
-            <li class="list-tools-collect">收藏{{p.collects}}</li>
+            <li class="list-tools-collect" @click="collect">收藏{{p.collects}}</li>
             <li class="list-tools-nointerests">不感兴趣{{p.noInterests}}</li>
             <li class="list-tools-accusation">举报{{p.accusation}}</li>
         </ul>
-        <Comment :acceptComment=p></Comment>
+        <div class="comments" v-show="showComments">
+            <Comment :acceptComment=commentsContent :articleID=p.articleID ></Comment>
+        </div>
         <!-- 评论 -->
     </div>
 
@@ -111,7 +113,9 @@ export default {
     },
     data(){
         return{
-            serverPath:'http://192.168.1.90:3000'
+            serverPath:'http://192.168.1.90:3000',
+            showComments:false,
+            commentsContent:[]
         }
     },
     components:{
@@ -120,16 +124,21 @@ export default {
     methods:{
         
         showComment(){
-            // let showCommentAPI = '/api/getCommentList'
-            // let params={
-            //     articleID:this.p.articleID
-            // }
-            // console.log(params)
-            // this.$axios.post(showCommentAPI,params).then(res=>{
-            //     console.log(res)
-            // }).catch(err=>{
-            //     console.log(err)
-            // })
+            this.showComments = !this.showComments
+            let showCommentAPI = '/api/getCommentList'
+            let params={
+                articleID:this.p.articleID
+            }
+            console.log(this.p.articleID)
+            this.$axios.post(showCommentAPI,params).then(res=>{
+                // console.log(res)
+                this.commentsContent = res.data
+            }).catch(err=>{
+                console.log(err)
+            })
+        },
+        collect(){
+            
         }
     },
     mounted(){
