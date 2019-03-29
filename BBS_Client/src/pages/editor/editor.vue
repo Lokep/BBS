@@ -160,7 +160,8 @@ export default {
                 tags:[],
                 content:'',
                 createAt:new Date().toLocaleDateString(),
-                author:STORAGE.GET()[0].userName
+                author:STORAGE.GET()[0].userName,
+                authorID:STORAGE.GET()[0].userID
             },
             alertTitle:'',
             isShowError:false
@@ -231,6 +232,7 @@ export default {
                 this.$refs.upload.submit();
                 this.$axios.post(editorAPI,that.articleInfo).then(res=>{
                     console.log(res)
+                    this.$router.push('/')
                 }).catch(err=>{
                     console.log(err)
                 });

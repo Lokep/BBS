@@ -117,7 +117,7 @@
                     </span>
                     <el-dropdown-menu slot="dropdown" class="nav-user-head-pic">
                         <el-dropdown-item>
-                            <router-link to="/" tag="div">
+                            <router-link to="/personal" tag="div">
                                 <img class="nav-icon-user" src="../../assets/svgs/user.svg" alt="">
                                 我的主页
                             </router-link>

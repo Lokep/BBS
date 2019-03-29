@@ -37,14 +37,15 @@ router.post('/content', (req, res, next) => {
 
     // let acticleID = stamp
     let author = req.body.author
+    let authorID = req.body.authorID
     let title = req.body.title
     let tagName = req.body.tags[0].topicName
     let tagCode = req.body.tags[0].topicID
     let content = req.body.content
     let createAt = req.body.createAt
 
-    let sql = `INSERT INTO ${ARTICLE_TABLE} (articleID,author,title,tagName,tagCode,content,createAt) VALUES(?,?,?,?,?,?,?)`
-    let params = [stamp, author, title, tagName, tagCode, content, createAt]
+    let sql = `INSERT INTO ${ARTICLE_TABLE} (articleID,author,title,authorID,tagName,tagCode,content,createAt) VALUES(?,?,?,?,?,?,?,?)`
+    let params = [stamp, author, title, authorID, tagName, tagCode, content, createAt]
     db.add(sql, params, (err, result) => {
         if (err) {
             console.log(err)
