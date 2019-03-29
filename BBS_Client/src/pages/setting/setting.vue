@@ -95,22 +95,22 @@
             <div class="setting-block setting-sub-block">
                 <h4 class="setting-sub-title">密码</h4>
                 <span class="setting-desc">帐户设置/密码服务</span>
-                <button class="fr setting-btn" @click="modalEdit">编辑</button>
+                <button class="fr setting-btn" @click="modalEdit('密码')">编辑</button>
             </div>
             <div class="setting-block setting-sub-block">
                 <h4 class="setting-sub-title">绑定手机</h4>
                 <span class="setting-desc">155****6128</span>
-                <button class="fr setting-btn" @click="modalEdit">编辑</button>
+                <button class="fr setting-btn" @click="modalEdit('手机号')">编辑</button>
             </div>
             <div class="setting-block setting-sub-block">
                 <h4 class="setting-sub-title">绑定邮箱</h4>
                 <span class="setting-desc">93*******@qq.com</span>
-                <button class="fr setting-btn" @click="modalEdit">编辑</button>
+                <button class="fr setting-btn" @click="modalEdit('邮箱')">编辑</button>
             </div>
             
         </div>
 
-        <EditModal :isVisible="modalVisible" @on-visible-change="onVisibleChange" ></EditModal>   
+        <EditModal :isVisible="modalVisible" :inputType="inputType" @on-visible-change="onVisibleChange" ></EditModal>
     </div>
 </template>
 <script>
@@ -118,15 +118,17 @@ import EditModal from '../../components/modal/setting-edit'
 export default {
     data(){
         return{
-            modalVisible:false
+            modalVisible:false,
+            inputType: ""
         }
     },
     components:{
         EditModal
     },
     methods:{
-        modalEdit(){
-            this.modalVisible = true
+        modalEdit(inputType){
+            this.modalVisible = true;
+            this.inputType = inputType
         },
         onVisibleChange(val){
             console.log(val)
