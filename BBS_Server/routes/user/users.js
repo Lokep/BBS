@@ -13,7 +13,7 @@ router.post('/login', function(req, res, next) {
     let userInfo = req.body;
     let sql = ` select * from ${USERINFO_TABLE} where ${userInfo.accountType} = ? and password = ? `
     let params = [userInfo.account, userInfo.password]
-
+    console.log("userInfo", userInfo)
     db.query(sql, params, (err, result) => {
         if (err) {
             console.log(`查询失败:${err}`)
@@ -57,7 +57,7 @@ router.post('/checkUniqueEmail', function(req, res, next) {
     let params = userInfo.email
     let data = {
         isExisits: true //存在
-    }
+    };
     db.query(sql, params, (err, result) => {
         if (err) {
             console.log(`查询失败:${err}`)
@@ -74,7 +74,7 @@ router.post('/checkUniqueEmail', function(req, res, next) {
     });
 });
 
-router.post('/register', (req, res) => {
+router.post('/register', (req, res, next) => {
     let date = new Date();
     let userID = Date.parse(date).toString()
     let createAt = date.toLocaleDateString();
@@ -92,8 +92,87 @@ router.post('/register', (req, res) => {
             jsonResult(res, result)
         }
     });
-})
+});
 
+router.post('/update_pwd', (req, res, next) => {
+    let updateInfo = req.body,
+        sql = `SELECT * FROM ${USERINFO_TABLE} WHERE id = ?`,
+        params = [updateInfo.id],
+        updateSql = `UPDATE ${USERINFO_TABLE} SET password = ? WHERE id = ?`,
+        updateParams = [updateInfo.newpwd, updateInfo.id];
+    db.query(sql, params, (err, result) => {
+        if (err) {
+            console.log(`查询失败:${err}`);
+            return false
+        } else {
+            if(result[0].password === updateInfo.oldpwd) {
+                db.query(updateSql, updateParams, (error, data) => {
+                    if(error) {
+                        console.log(`查询失败:${error}`);
+                        return false
+                    }
+                    res.send({code: "200", message: "密码修改成功", data: data})
+                })
+            } else {
+                res.send({code: "404", message: "旧密码输入错误"})
+            }
+        }
+    });
+});
 
+router.post('/update_phone', (req, res, next) => {
+    let updateInfo = req.body,
+        sql = `SELECT * FROM ${USERINFO_TABLE} WHERE id = ?`,
+        params = [updateInfo.id],
+        updateSql = `UPDATE ${USERINFO_TABLE} SET phone = ? WHERE id = ?`,
+        updateParams = [updateInfo.newphone, updateInfo.id];
+    db.query(sql, params, (err, result) => {
+        if (err) {
+            console.log(`查询失败:${err}`);
+            return false
+        } else {
+            if(result[0].phone === updateInfo.oldphone) {
+                db.query(updateSql, updateParams, (error, data) => {
+                    if(error) {
+                        console.log(`查询失败:${error}`);
+                        return false
+                    }
+                    res.send({code: "200", message: "手机号修改成功", data: data})
+                })
+            } else {
+                res.send({code: "404", message: "旧手机号输入错误"})
+            }
+        }
+    });
+});
+
+router.post('/update_email', (req, res, next) => {
+    let updateInfo = req.body,
+        sql = `SELECT * FROM ${USERINFO_TABLE} WHERE id = ?`,
+        params = [updateInfo.id],
+        updateSql = `UPDATE ${USERINFO_TABLE} SET email = ? WHERE id = ?`,
+        updateParams = [updateInfo.newemail, updateInfo.id];
+    db.query(sql, params, (err, result) => {
+        if (err) {
+            console.log(`查询失败:${err}`);
+            return false
+        } else {
+            console.log(result[0].password, "result.password")
+            console.log(result[0], "result")
+            console.log(result[0].email === updateInfo.oldemail)
+            if(result[0].email === updateInfo.oldemail) {
+                db.query(updateSql, updateParams, (error, data) => {
+                    if(error) {
+                        console.log(`查询失败:${error}`);
+                        return false
+                    }
+                    res.send({code: "200", message: "邮箱修改成功", data: data})
+                })
+            } else {
+                res.send({code: "404", message: "原始邮箱输入错误"})
+            }
+        }
+    });
+});
 
 module.exports = router;
