@@ -99,12 +99,12 @@
             </div>
             <div class="setting-block setting-sub-block">
                 <h4 class="setting-sub-title">绑定手机</h4>
-                <span class="setting-desc">155****6128</span>
+                <span class="setting-desc">{{confusion.phone}}</span>
                 <button class="fr setting-btn" @click="modalEdit('手机号')">编辑</button>
             </div>
             <div class="setting-block setting-sub-block">
                 <h4 class="setting-sub-title">绑定邮箱</h4>
-                <span class="setting-desc">93*******@qq.com</span>
+                <span class="setting-desc">{{confusion.email}}</span>
                 <button class="fr setting-btn" @click="modalEdit('邮箱')">编辑</button>
             </div>
             
@@ -115,11 +115,16 @@
 </template>
 <script>
 import EditModal from '../../components/modal/setting-edit'
+import STORAGE from '../../assets/javascripts/storage.js'
 export default {
     data(){
         return{
             modalVisible:false,
-            inputType: ""
+            inputType: "",
+            confusion:{
+                phone:'',
+                email:''
+            }
         }
     },
     components:{
@@ -133,7 +138,27 @@ export default {
         onVisibleChange(val){
             console.log(val)
             this.modalVisible=val;//④外层调用组件方注册变更方法，将组件内的数据变更，同步到组件外的数据状态中
+        },
+        confusionPhone(v,row){
+            row = row||4
+            var len= v.length;
+            var star= v.substring(3,len-row);
+            var value = v.replace(star,"****");
+            return value;
+        },
+        confusionEmail(v,row){
+            row = row||4
+            var len= v.length;
+            var arr = v.split('@')
+            var suffix = '@'+arr[arr.length-1]
+            var star= arr[0].substring(3,len-row);
+            var value = arr[0].replace(star,"****")+suffix;
+            return value;
         }
+    },
+    mounted(){
+        this.confusion.email = this.confusionEmail(STORAGE.GET('USERINFO')[0].email,4)
+        this.confusion.phone = this.confusionPhone(STORAGE.GET('USERINFO')[0].phone,4)
     }
 }
 </script>

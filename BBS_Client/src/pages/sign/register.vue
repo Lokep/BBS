@@ -209,7 +209,12 @@ export default {
                 if (valid) {
 
                     that.$axios.post(registerAPI,that.registerForm).then( res =>{
-                        console.log(res)
+                        console.log(res.data)
+                        
+                        if(res.data.length){
+                            STORAGE.SET(res.data)
+                            this.$router.push({path:'/',params:res.data})
+                        }
                     }).catch (err =>{
                         console.log(err)
                     })

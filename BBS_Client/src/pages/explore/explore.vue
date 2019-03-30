@@ -50,13 +50,13 @@ export default {
     data(){
         return {
             activityType: [{
-                value: '全国',
+                value: '',
                 label: '全部类型'
             },  {
-                value: '北京',
+                value: '0',
                 label: '线上活动'
             }, {
-                value: '杭州',
+                value: '1',
                 label: '线下活动'
             }],
             activityCity:city,
@@ -76,7 +76,7 @@ export default {
                 type:this.type,
                 city:this.city
             }
-            console.log(params)
+            console.log(this.type)
             this.$axios.post(exploreApi,params).then(res=>{
                 this.activityList = res.data;
                 console.log(res)

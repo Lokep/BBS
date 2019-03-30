@@ -12,6 +12,8 @@ import axios from 'axios'
 import '../src/assets/styles/reset.css'
 import '../src/assets/styles/common.css'
 
+import '../src/assets/styles/font-awesome.min.css'
+
 /* 引入ElementUI */
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';

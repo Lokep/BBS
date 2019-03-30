@@ -2,9 +2,8 @@
     .lists{
         background-color: #fff;
         width: 694px;
-        /* padding: 0 0 20px; */
+        margin-right: 100px;
         border-radius: 4px;
-        /* min-height: 100vh; */
     }
     
 </style>

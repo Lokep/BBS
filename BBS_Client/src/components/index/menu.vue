@@ -1,19 +1,17 @@
 <style>
     .index-left{
         position: fixed;
-        top: 70px;
+        top: 160px;
         left: 50%;
-        margin-left: -515px;
-        width: 296px;
+        margin-left: -400px;
     }
     .index-block{
         margin-bottom: 10px;
-        background: #FFFFFF;
+        /* background: #FFFFFF; */
         overflow: hidden;
         border-radius: 2px;
-        box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);
         box-sizing: border-box;
-        width: 276px;
+        /* width: 276px; */
         padding: 0 10px;
     }
     .index-left-edit{
@@ -31,22 +29,33 @@
         height: 24px;
         margin: 25px auto 5px;
     }
-    .index-left-special{
-        height: 120px;
-    }
+
     .index-left-special>li{
         height: 40px;
-        text-align: left;
         color:#8590A6;
         font-size: 14px;
-        line-height: 40px;
+        border-radius: 40px;
+        background-color: #fff;
+        box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);
+        width: 40px;
+        overflow: hidden;
+        margin-bottom: 15px;
+    }
+    .index-left-special>li:hover{
+        background-color: #0084FF;
+    }
+    .index-left-special>li:hover .index-icon-special{
+        fill: #fff;
+        color:#fff;
     }
     .index-icon-special{
-        display: inline-block;
+        display: block;
         width: 18px;
         height: 18px;
-        margin: -4px 0 0 0;
-        vertical-align: middle;
+        margin: 11px auto;
+        text-align: center;
+        line-height: 20px;
+        font-size: 18px;
     }
     .index-icon-hot{
         width: 22px;
@@ -56,32 +65,32 @@
 </style>
 <template>
     <div class="index-left fl">
-        <div class="index-left-edit index-block ">
-            <router-link to='/editor' tag="span" class="pointer">
-                <img class="index-icon-edit" src="../../assets/svgs/edit-article.svg" alt="">
-                写文章
-            </router-link>
+        <!-- <div class="index-left-edit index-block ">
+            
             <router-link to='/editor' tag="span" class="pointer">
                 <img class="index-icon-edit" src="../../assets/svgs/edit-thought.svg" alt="">
                 写想法
             </router-link>
-        </div>
+        </div> -->
         <ul class="index-left-special index-block">
+
             <router-link to="/" tag="li" class="pointer">
-                <img class="index-icon-special" src="../../assets/svgs/like.svg" alt="">
-                推荐
+                <el-tooltip class="item" effect="dark" content="推荐" placement="right-end">
+                    <i class="fa fa-heart index-icon-special"></i>
+                </el-tooltip>
             </router-link>
 
             <router-link to="/collection" tag="li" class="pointer">
-                <img class="index-icon-special" src="../../assets/svgs/follow.svg" alt="">
-                关注
+                <el-tooltip class="item" effect="dark" content="关注" placement="right-end">
+                    <i class="fa fa-star index-icon-special"></i>
+                </el-tooltip>
             </router-link>
             
-            <router-link to="/hot" tag="li" class="pointer">
-                <img class="index-icon-special index-icon-hot" src="../../assets/svgs/hot.svg" alt="">
-                热榜
+            <router-link to='/editor' tag="li" class="pointer">
+                <el-tooltip class="item" effect="dark" content="写文章" placement="right-end">
+                    <i class="fa fa-edit index-icon-special"></i>
+                </el-tooltip>    
             </router-link>
-            <router-link to="/" tag="li"></router-link>
         </ul>
         <div class="index-footer">
             

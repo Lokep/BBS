@@ -14,9 +14,20 @@ router.get('/', function(req, res, next) {
 
 router.post('/articleList', (req, res, next) => {
     // let sql = `select * from ${ARTICLE_TABLE} `
-    let sql = `select a.*,ai.imgName,ai.path from ${ARTICLE_TABLE} as a 
-    LEFT JOIN 
-    (SELECT aid,path,name AS imgName from ${ARTICLEIMG}) as ai on a.articleID = ai.aid`
+    let sql = `select a.*,ai.imgName,ai.path from ${ARTICLE_TABLE} as a LEFT JOIN (SELECT aid,path,name AS imgName from ${ARTICLEIMG}) as ai on a.articleID = ai.aid`
+    db.query(sql, '', (err, result) => {
+        if (err) {
+            console.log(err)
+            return false
+        } else {
+            jsonResult(res, result)
+        }
+    })
+})
+
+router.post('/articleDetail', (req, res, next) => {
+    let articleID = req.body.articleID
+    let sql = `select a.*,ai.imgName,ai.path from ${ARTICLE_TABLE} as a LEFT JOIN (SELECT aid,path,name AS imgName from ${ARTICLEIMG}) as ai on a.articleID = ai.aid where articleID=${articleID}`
     db.query(sql, '', (err, result) => {
         if (err) {
             console.log(err)
@@ -47,6 +58,7 @@ router.post('/getCommentList', (req, res, next) => {
     })
 })
 
+//评论
 router.post('/sendComent', (req, res, next) => {
     /*
      * info = > userID,parentID,createAt,content,articleID
@@ -54,6 +66,7 @@ router.post('/sendComent', (req, res, next) => {
     let info = req.body
     console.log(info)
     let sql = `INSERT INTO ${COMMENT_TABLE}(parentID,userID,createAt,content,articleID) VALUES(?,?,?,?,?)`
+    let getIDsql = `SELECT max(id) as id,createAt from ${COMMENT_TABLE}`
     let params = [
         info.parentID,
         info.userID,
@@ -67,8 +80,15 @@ router.post('/sendComent', (req, res, next) => {
             console.log(err)
             return false
         } else {
-            // console.log(result)
-            jsonResult(res, result)
+            db.query(getIDsql, '', (error, resultList) => {
+                if (error) {
+                    jsonResult(res)
+                } else {
+                    console.log(resultList)
+                    jsonResult(res, resultList)
+                }
+            })
+
         }
     })
 })

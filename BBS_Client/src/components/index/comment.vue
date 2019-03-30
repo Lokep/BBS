@@ -121,6 +121,17 @@ export default {
                 parentID:0,
                 userID:STORAGE.GET('USERINFO')[0].userID,
                 articleID:''
+            },
+            newComment:{
+                content:'',
+                parentID:0,
+                userID:STORAGE.GET('USERINFO')[0].userID,
+                articleID:'',
+
+                createAt: '',
+                id: '',
+                parentname: '',
+                username: STORAGE.GET('USERINFO')[0].username
             }
         }
     },
@@ -152,6 +163,22 @@ export default {
                 let sendCommentAPI = '/api/sendComent'
                 this.submitComment.articleID = this.articleID
                 this.$axios.post(sendCommentAPI,that.submitComment).then(res=>{
+                    console.log(res)
+
+                    that.newComment = {    
+                        content:that.submitComment.content,
+                        parentID:that.replyTag.id,
+                        userID:STORAGE.GET('USERINFO')[0].userID,
+                        articleID:that.submitComment.articleID,
+
+                        createAt: res.data[0].createAt,
+                        id: res.data[0].id,
+                        parentname: that.replyTag.name,
+                        username: STORAGE.GET('USERINFO')[0].userName
+                    }
+
+
+                    that.$emit('addNewComment',that.newComment)                    
                     that.submitComment= {
                         content:'',
                         parentID:0,

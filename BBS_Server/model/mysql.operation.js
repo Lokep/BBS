@@ -66,9 +66,22 @@ module.exports = {
     },
     query: function(sql, params, cb) {
 
+        // pool.getConnection(function(err, connection) {
+        //     connection.query(sql, params, cb)
+        //     connection.release();
+        // })
+
+
         pool.getConnection(function(err, connection) {
-            connection.query(sql, params, cb)
+            if (err) {
+                console.log(`数据库连接失败:${err}`)
+                throw err
+            }
+            // 建立连接，向表中插入值
+            // 'INSERT INTO user(...keys) VALUES(?,?,?)',
+            connection.query(sql, params, cb);
+            // 释放连接 
             connection.release();
-        })
+        });
     }
 }

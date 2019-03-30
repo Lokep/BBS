@@ -98,9 +98,39 @@
     color: #007fff;
 }
 
+.list-tools {
+    width: 654px;
+    height: 32px;
+    margin: 25px 0 0;
+}
 
-/* 富文本编辑器编辑区域 */
+.list-tools>li {
+    float: left;
+    padding: 0 12px;
+    color: hsl(220.00000000000003, 15.6398104265%, 53.6274509804%);
+    font-size: 14px;
+    line-height: 30px;
+    cursor: pointer;
+    margin-right: 10px;
+}
 
-.ql-editor {
-    min-height: 500px!important;
+.list-tools>.list-tools-agree,
+.list-tools>.list-tools-disagree {
+    padding: 0 12px;
+    color: #0084FF;
+    background: rgba(0, 132, 255, 0.1);
+    border-color: transparent;
+    border-radius: 4px;
+}
+
+.list-tag {
+    display: inline;
+    font-size: 14px;
+    vertical-align: middle;
+    background: #0084FF;
+    border-radius: 4px;
+    color: #fff;
+    padding: 3px 5px;
+    font-weight: 400;
+    margin-right: 10px;
 }

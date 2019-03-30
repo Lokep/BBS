@@ -13,6 +13,7 @@ import Editor from '@/pages/editor/editor'
 import Collection from '@/pages/collection/collection'
 import Hot from '@/pages/hot/hot'
 import Personal from '@/pages/personal/personal'
+import Article from '@/pages/article/article'
 
 import STORAGE from '../assets/javascripts/storage'
 
@@ -81,6 +82,10 @@ const router = new Router({
         path: '/personal',
         name: 'personal',
         component: Personal
+    }, {
+        path: '/article/:articleID',
+        name: 'article',
+        component: Article
     }]
 })
 

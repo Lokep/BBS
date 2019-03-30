@@ -80,7 +80,7 @@ router.post('/register', (req, res, next) => {
     let createAt = date.toLocaleDateString();
     let userInfo = req.body;
 
-    let sql = `INSERT INTO ${USERINFO_TABLE}(userID,userName,password,phone,email,createAt) VALUES(?,?,?,?,?,?) `
+    let sql = `INSERT INTO ${USERINFO_TABLE}(userID,userName,password,phone,email,createAt,state) VALUES(?,?,?,?,?,?,0) `
     let params = [userID, userInfo.userName, userInfo.password, userInfo.phone, userInfo.email, createAt]
 
     db.add(sql, params, (err, result) => {
@@ -89,7 +89,14 @@ router.post('/register', (req, res, next) => {
             jsonResult(res)
             return false
         } else {
-            jsonResult(res, result)
+            db.query('SELECT * from userinfo WHERE id = (SELECT max(id) as id from `userinfo`)', '', (error, resultList) => {
+                if (error) {
+                    jsonResult(res)
+                    return false
+                } else {
+                    jsonResult(res, resultList)
+                }
+            })
         }
     });
 });
@@ -105,16 +112,16 @@ router.post('/update_pwd', (req, res, next) => {
             console.log(`查询失败:${err}`);
             return false
         } else {
-            if(result[0].password === updateInfo.oldpwd) {
+            if (result[0].password === updateInfo.oldpwd) {
                 db.query(updateSql, updateParams, (error, data) => {
-                    if(error) {
+                    if (error) {
                         console.log(`查询失败:${error}`);
                         return false
                     }
-                    res.send({code: "200", message: "密码修改成功", data: data})
+                    res.send({ code: "200", message: "密码修改成功", data: data })
                 })
             } else {
-                res.send({code: "404", message: "旧密码输入错误"})
+                res.send({ code: "404", message: "旧密码输入错误" })
             }
         }
     });
@@ -131,16 +138,16 @@ router.post('/update_phone', (req, res, next) => {
             console.log(`查询失败:${err}`);
             return false
         } else {
-            if(result[0].phone === updateInfo.oldphone) {
+            if (result[0].phone === updateInfo.oldphone) {
                 db.query(updateSql, updateParams, (error, data) => {
-                    if(error) {
+                    if (error) {
                         console.log(`查询失败:${error}`);
                         return false
                     }
-                    res.send({code: "200", message: "手机号修改成功", data: data})
+                    res.send({ code: "200", message: "手机号修改成功", data: data })
                 })
             } else {
-                res.send({code: "404", message: "旧手机号输入错误"})
+                res.send({ code: "404", message: "旧手机号输入错误" })
             }
         }
     });
@@ -160,16 +167,16 @@ router.post('/update_email', (req, res, next) => {
             console.log(result[0].password, "result.password")
             console.log(result[0], "result")
             console.log(result[0].email === updateInfo.oldemail)
-            if(result[0].email === updateInfo.oldemail) {
+            if (result[0].email === updateInfo.oldemail) {
                 db.query(updateSql, updateParams, (error, data) => {
-                    if(error) {
+                    if (error) {
                         console.log(`查询失败:${error}`);
                         return false
                     }
-                    res.send({code: "200", message: "邮箱修改成功", data: data})
+                    res.send({ code: "200", message: "邮箱修改成功", data: data })
                 })
             } else {
-                res.send({code: "404", message: "原始邮箱输入错误"})
+                res.send({ code: "404", message: "原始邮箱输入错误" })
             }
         }
     });

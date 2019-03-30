@@ -1,4 +1,4 @@
-<style scope>
+<style>
     .list{
         padding: 20px 0;
         width: 654px;
@@ -39,44 +39,13 @@
         background-color: rgba(255,255,255,.4);
         cursor: pointer;
     }
-    .list-tools{
-        width: 654px;
-        height: 32px;
-        margin: 25px 0 0;
-    }
-    .list-tools>li{
-        float: left;
-        padding: 0 12px;
-        color: hsl(220.00000000000003, 15.6398104265%, 53.6274509804%);
-        font-size: 14px;
-        line-height: 30px;
-        cursor: pointer;
-        margin-right: 10px;
-    }
-    .list-tools>.list-tools-agree,.list-tools>.list-tools-disagree{
-        padding: 0 12px;
-        color: #0084FF;
-        background: rgba(0, 132, 255, 0.1);
-        border-color: transparent;
-        border-radius: 4px;
-    }
-    .list-tag{
-        display: inline;
-        font-size: 14px;
-        vertical-align: middle;
-        background: #0084FF;
-        border-radius: 4px;
-        color: #fff;
-        padding: 3px 5px;
-        font-weight: 400;
-        margin-right: 10px;
-    }
+    
 </style>
 <template>
     <!-- 无图的时候，展示2行共65个字，有图展示4行共90个 -->
 
     <div class="list">
-        <router-link to="/question" tag="h3" class="list-title"><span class="list-tag">{{p.tagName}}</span>{{p.title}}</router-link>
+        <router-link :to=" '/article/'+p.articleID" tag="h3" class="list-title"><span class="list-tag">{{p.tagName}}</span>{{p.title}}</router-link>
         <div class="list-content ov" v-if='p.imgName'>
             <img class="list-img fl" :src="serverPath + p.path+p.imgName" alt="article">
             <span class="list-inshort fr ellipsis-within-four-rows list-inshort-with-img read-whole-art">
@@ -97,7 +66,7 @@
             <li class="list-tools-accusation">举报{{p.accusation}}</li>
         </ul>
         <div class="comments" v-show="showComments">
-            <Comment :acceptComment=commentsContent :articleID=p.articleID ></Comment>
+            <Comment @addNewComment='addNewComment' :acceptComment=commentsContent :articleID=p.articleID ></Comment>
         </div>
         <!-- 评论 -->
     </div>
@@ -139,6 +108,9 @@ export default {
         },
         collect(){
             
+        },
+        addNewComment(v){
+            this.commentsContent.push(v)
         }
     },
     mounted(){
