@@ -100,7 +100,7 @@ router.beforeEach((to, from, next) => {
     const loginInfo = STORAGE.GET() //array
 
     //白名单
-    const freeRoute = ['login', 'register']
+    const freeRoute = ['login', 'register', 'reset-password']
     const inFreeRoute = freeRoute.indexOf(to.name)
     if (inFreeRoute < 0 && loginInfo.length == '') {
 

@@ -2,21 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fab39c9a-70fd-465a-a886-d6d2acf39161" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BBS_Management_Client/src/utils/http.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BBS_Management_Serve/routes/activity/activities.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BBS_Management_Serve/routes/admin/admin.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BBS_Management_Serve/routes/article/articles.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BBS_Management_Serve/routes/topic/topics.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BBS_Management_Client/config/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/BBS_Management_Client/config/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BBS_Management_Client/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/BBS_Management_Client/src/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BBS_Management_Client/src/views/articleManage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/BBS_Management_Client/src/views/articleManage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BBS_Management_Client/src/views/topicManage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/BBS_Management_Client/src/views/topicManage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BBS_Management_Client/src/views/userManage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/BBS_Management_Client/src/views/userManage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BBS_Management_Serve/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/BBS_Management_Serve/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BBS_Management_Serve/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/BBS_Management_Serve/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BBS_Management_Serve/routes/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/BBS_Management_Serve/routes/users.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BBS_Server/routes/user/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/BBS_Server/routes/user/users.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -29,53 +16,39 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/BBS_Management_Serve/routes/index/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="92">
-              <caret line="4" column="23" lean-forward="true" selection-end-line="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/BBS_Management_Serve/routes/activity/activities.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="12" column="109" selection-start-line="12" selection-start-column="103" selection-end-line="12" selection-end-column="109" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/BBS_Management_Serve/routes/user/users.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="519">
-              <caret line="41" column="3" selection-start-line="41" selection-start-column="3" selection-end-line="41" selection-end-column="3" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/BBS_Management_Serve/routes/admin/admin.js">
+        <entry file="file://$PROJECT_DIR$/BBS_Management_Client/src/views/404.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="59" column="10" lean-forward="true" selection-start-line="59" selection-start-column="10" selection-end-line="59" selection-end-column="10" />
-            </state>
+            <state relative-caret-position="-138" />
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
   <component name="FindInProjectRecents">
     <findStrings>
       <find>ARTICLE_TABLE</find>
       <find>userInfo</find>
+      <find>activity</find>
+      <find>$router</find>
+      <find>topic</find>
+      <find>created</find>
+      <find>updateInfo</find>
+      <find>store</find>
     </findStrings>
     <replaceStrings>
       <replace>TOPICS_TABLE</replace>
       <replace>EXPLORE_TABLE</replace>
       <replace>message</replace>
+      <replace>topic</replace>
+      <replace>admin</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -84,11 +57,33 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/BBS_Management_Serve/routes/article/articles.js" />
-        <option value="$PROJECT_DIR$/BBS_Management_Serve/routes/topic/topics.js" />
+        <option value="$PROJECT_DIR$/BBS_Management_Client/src/utils/formatDate.js" />
+        <option value="$PROJECT_DIR$/BBS_Management_Client/src/views/activity/page.vue" />
+        <option value="$PROJECT_DIR$/BBS_Management_Client/src/views/topic/page.vue" />
+        <option value="$PROJECT_DIR$/BBS_Management_Serve/app.js" />
+        <option value="$PROJECT_DIR$/BBS_Management_Serve/model/mysql.operation.js" />
+        <option value="$PROJECT_DIR$/BBS_Management_Client/src/views/Login.vue" />
+        <option value="$PROJECT_DIR$/BBS_Management_Client/src/views/admin/page.vue" />
+        <option value="$PROJECT_DIR$/BBS_Management_Client/src/utils/http.js" />
+        <option value="$PROJECT_DIR$/BBS_Server/routes/user/users.js" />
         <option value="$PROJECT_DIR$/BBS_Management_Serve/routes/user/users.js" />
-        <option value="$PROJECT_DIR$/BBS_Management_Serve/routes/activity/activities.js" />
+        <option value="$PROJECT_DIR$/BBS_Management_Serve/routes/topic/topics.js" />
+        <option value="$PROJECT_DIR$/BBS_Management_Serve/routes/article/articles.js" />
         <option value="$PROJECT_DIR$/BBS_Management_Serve/routes/admin/admin.js" />
+        <option value="$PROJECT_DIR$/BBS_Management_Serve/routes/activity/activities.js" />
+        <option value="$PROJECT_DIR$/BBS_Management_Client/src/main.js" />
+        <option value="$PROJECT_DIR$/BBS_Management_Client/src/vuex/store.js" />
+        <option value="$PROJECT_DIR$/BBS_Management_Client/config/index.js" />
+        <option value="$PROJECT_DIR$/BBS_Management_Client/src/components/Header.vue" />
+        <option value="$PROJECT_DIR$/BBS_Management_Client/src/components/SideBar.vue" />
+        <option value="$PROJECT_DIR$/BBS_Management_Client/src/router/index.js" />
+        <option value="$PROJECT_DIR$/BBS_Management_Client/src/views/activityManage.vue" />
+        <option value="$PROJECT_DIR$/BBS_Management_Client/src/views/adminManage.vue" />
+        <option value="$PROJECT_DIR$/BBS_Management_Client/src/views/articleManage.vue" />
+        <option value="$PROJECT_DIR$/BBS_Management_Client/src/views/dataAnalysis.vue" />
+        <option value="$PROJECT_DIR$/BBS_Management_Client/src/views/Home.vue" />
+        <option value="$PROJECT_DIR$/BBS_Management_Client/src/views/userManage.vue" />
+        <option value="$PROJECT_DIR$/BBS_Management_Client/src/views/topicManage.vue" />
       </list>
     </option>
   </component>
@@ -106,7 +101,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -117,39 +111,49 @@
             <path>
               <item name="BBS" type="b2602c69:ProjectViewProjectNode" />
               <item name="BBS" type="462c0819:PsiDirectoryNode" />
-              <item name="BBS_Management_Serve" type="462c0819:PsiDirectoryNode" />
+              <item name="BBS_Management_Client" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="BBS" type="b2602c69:ProjectViewProjectNode" />
               <item name="BBS" type="462c0819:PsiDirectoryNode" />
-              <item name="BBS_Management_Serve" type="462c0819:PsiDirectoryNode" />
-              <item name="routes" type="462c0819:PsiDirectoryNode" />
+              <item name="BBS_Management_Client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="BBS" type="b2602c69:ProjectViewProjectNode" />
               <item name="BBS" type="462c0819:PsiDirectoryNode" />
-              <item name="BBS_Management_Serve" type="462c0819:PsiDirectoryNode" />
-              <item name="routes" type="462c0819:PsiDirectoryNode" />
-              <item name="activity" type="462c0819:PsiDirectoryNode" />
+              <item name="BBS_Management_Client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="router" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="BBS" type="b2602c69:ProjectViewProjectNode" />
               <item name="BBS" type="462c0819:PsiDirectoryNode" />
-              <item name="BBS_Management_Serve" type="462c0819:PsiDirectoryNode" />
-              <item name="routes" type="462c0819:PsiDirectoryNode" />
-              <item name="user" type="462c0819:PsiDirectoryNode" />
+              <item name="BBS_Management_Client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BBS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BBS" type="462c0819:PsiDirectoryNode" />
+              <item name="BBS_Management_Client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="vuex" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="editor.config.ad.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -177,21 +181,26 @@
       <workItem from="1553243954094" duration="1320000" />
       <workItem from="1553480879133" duration="3245000" />
       <workItem from="1553484514546" duration="3071000" />
+      <workItem from="1553570115476" duration="1825000" />
+      <workItem from="1553579905598" duration="3286000" />
+      <workItem from="1553586632824" duration="12146000" />
+      <workItem from="1553652722394" duration="21765000" />
+      <workItem from="1553740579349" duration="18503000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9991000" />
+    <option name="totallyTimeSpent" value="67516000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22247024" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3294702" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -210,46 +219,261 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/BBS_Management_Serve/routes/index/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="4" column="23" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BBS_Management_Client/src/utils/city.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BBS_Management_Client/src/utils/formatDate.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BBS_Management_Client/src/views/activity/page.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="68" column="22" lean-forward="true" selection-start-line="68" selection-start-column="22" selection-end-line="68" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BBS_Management_Client/src/views/topic/page.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="44" column="46" lean-forward="true" selection-end-line="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BBS_Management_Serve/model/mysql.config.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BBS_Management_Serve/model/mysql.operation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="10" column="25" lean-forward="true" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BBS_Management_Serve/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="11" column="63" lean-forward="true" selection-start-line="11" selection-start-column="63" selection-end-line="11" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BBS_Management_Client/node_modules/element-ui/packages/button/src/button.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="874">
+          <caret line="38" column="6" selection-start-line="38" selection-start-column="6" selection-end-line="38" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BBS_Management_Client/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="21" column="28" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BBS_Management_Client/src/views/admin/page.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="644">
+          <caret line="51" column="46" selection-start-line="51" selection-start-column="46" selection-end-line="51" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BBS_Management_Client/src/utils/http.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="334">
+          <caret line="72" column="31" selection-start-line="72" selection-start-column="31" selection-end-line="72" selection-end-column="31" />
+          <folding>
+            <element signature="e#14#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/BBS_Management_Serve/routes/topic/topics.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="12" column="19" lean-forward="true" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
+        <state relative-caret-position="92">
+          <caret line="4" column="37" selection-start-line="4" selection-start-column="37" selection-end-line="4" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BBS_Server/routes/user/users.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-299">
+          <caret line="59" column="6" lean-forward="true" selection-start-line="59" selection-start-column="6" selection-end-line="59" selection-end-column="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/BBS_Management_Serve/routes/article/articles.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="426">
-          <caret line="54" column="3" lean-forward="true" selection-start-line="31" selection-end-line="54" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BBS_Management_Serve/routes/index/index.js">
-      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="92">
-          <caret line="4" column="23" lean-forward="true" selection-end-line="9" />
+          <caret line="4" column="6" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/BBS_Management_Serve/routes/user/users.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="519">
-          <caret line="41" column="3" selection-start-line="41" selection-start-column="3" selection-end-line="41" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BBS_Management_Serve/routes/activity/activities.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="12" column="109" selection-start-line="12" selection-start-column="103" selection-end-line="12" selection-end-column="109" />
+        <state relative-caret-position="276">
+          <caret line="42" column="31" lean-forward="true" selection-start-line="42" selection-start-column="4" selection-end-line="42" selection-end-column="31" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/BBS_Management_Serve/routes/admin/admin.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="59" column="10" lean-forward="true" selection-start-line="59" selection-start-column="10" selection-end-line="59" selection-end-column="10" />
+        <state relative-caret-position="380">
+          <caret line="72" column="31" lean-forward="true" selection-start-line="72" selection-start-column="4" selection-end-line="72" selection-end-column="31" />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BBS_Management_Serve/routes/activity/activities.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="519">
+          <caret line="52" column="5" lean-forward="true" selection-start-line="52" selection-start-column="5" selection-end-line="52" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BBS_Management_Client/src/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="17" column="26" lean-forward="true" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#140#161#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BBS_Management_Client/src/App.vue">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BBS_Management_Client/src/vuex/store.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#22#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BBS_Management_Client/config/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="12" column="32" selection-start-line="12" selection-start-column="32" selection-end-line="12" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BBS_Management_Client/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="10" column="7" lean-forward="true" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BBS_Management_Client/src/assets/logo.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BBS_Management_Client/src/components/Tags.vue">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BBS_Management_Client/src/components/SideBar.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="897">
+          <caret line="39" column="19" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BBS_Management_Client/src/components/Header.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1380">
+          <caret line="60" column="17" selection-start-line="60" selection-start-column="17" selection-end-line="60" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BBS_Management_Client/src/router/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="385">
+          <caret line="137" lean-forward="true" selection-start-line="137" selection-end-line="137" />
+          <folding>
+            <element signature="e#0#22#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BBS_Management_Client/src/views/adminManage.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="353">
+          <caret line="106" column="29" selection-start-line="106" selection-start-column="29" selection-end-line="106" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BBS_Management_Client/src/views/activityManage.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="117" column="32" selection-start-line="117" selection-start-column="32" selection-end-line="117" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BBS_Management_Client/src/views/articleManage.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-276">
+          <caret line="90" column="14" selection-start-line="90" selection-start-column="14" selection-end-line="90" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BBS_Management_Client/src/views/dataAnalysis.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="173" column="7" lean-forward="true" selection-start-line="173" selection-start-column="7" selection-end-line="173" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BBS_Management_Client/src/views/userManage.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="48" column="19" selection-start-line="48" selection-start-column="19" selection-end-line="48" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BBS_Management_Client/src/views/topicManage.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="45" column="17" selection-start-line="45" selection-start-column="17" selection-end-line="45" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BBS_Management_Client/src/views/Login.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="160" column="23" lean-forward="true" selection-start-line="160" selection-start-column="23" selection-end-line="160" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BBS_Management_Client/src/views/Home.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="30" column="24" selection-start-line="30" selection-start-column="24" selection-end-line="30" selection-end-column="24" />
+          <folding>
+            <element signature="e#390#436#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BBS_Management_Client/src/views/404.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-138" />
       </provider>
     </entry>
   </component>
