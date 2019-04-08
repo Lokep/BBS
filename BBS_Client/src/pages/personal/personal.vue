@@ -44,9 +44,16 @@
     }
     .personal-content{
         width: 800px;
-        height: 200px;
+        /*height: 200px;*/
         background-color: #fff;
+        float: left;
     }
+
+    .topic-content {
+        float: left;
+        width: 150px;
+    }
+
 </style>
 <template>
     <div class="personal">
@@ -85,21 +92,38 @@
             </ul> -->
 
             <div class="personal-content">
-
+                <List v-for="(l,i) in listSum" :p="l" :key='i'></List>
+            </div>
+            <div class="topic-content">
+                <TopicsList v-for="(k,i) in topicsList" :key="i" :index="i" :topicsContent="k" ></TopicsList>
             </div>
         </div>
     </div>
 </template>
 <script>
 import STORAGE from '../../assets/javascripts/storage.js'
+import List from '../../components/index/list';
+import TopicsList from '../../components/topics/topics-list'
+
 export default {
+    components: {
+        List,
+        TopicsList
+    },
     data(){
         return{
             headPicBg:'#'+('00000'+(Math.random()*0x1000000<<0).toString(16)).substr(-6),
             sign:'',
             isEditSign:false,
-            userInfo:STORAGE.GET('USERINFO')[0]
+            userInfo:STORAGE.GET('USERINFO')[0],
+            listSum: [],
+            topicsList: []
         }
+    },
+    mounted() {
+        this.user = STORAGE.GET('USERINFO')[0];
+      this.getArticleList()
+        this.getTopicList()
     },
     methods:{
         changeHeadPicBg(){
@@ -107,6 +131,23 @@ export default {
         },
         editSign(){
             this.isEditSign = true
+        },
+        getArticleList() {
+            this.$axios.get('/api/anthorArticleList', {params: {authorId: this.userInfo.userID}}).then(res=>{
+                if(res.data.code === "200") {
+                    this.listSum = res.data.result
+                }
+            }).catch(err=>{
+                console.log(err)
+            })
+        },
+        getTopicList() {
+            this.$axios.post("/api/topics/list").then(res=>{
+                this.topicsList = res.data.slice(0, 5)
+                console.log(res)
+            }).catch(err=>{
+                console.log(err)
+            })
         }
     }
 }

@@ -25,6 +25,7 @@ router.post('/articleList', (req, res, next) => {
     })
 })
 
+
 router.post('/articleDetail', (req, res, next) => {
     let articleID = req.body.articleID
     let sql = `select a.*,ai.imgName,ai.path from ${ARTICLE_TABLE} as a LEFT JOIN (SELECT aid,path,name AS imgName from ${ARTICLEIMG}) as ai on a.articleID = ai.aid where articleID=${articleID}`
@@ -34,6 +35,19 @@ router.post('/articleDetail', (req, res, next) => {
             return false
         } else {
             jsonResult(res, result)
+        }
+    })
+})
+
+router.get('/anthorArticleList', (req, res, next) => {
+    let sql = `select * from ${ARTICLE_TABLE} where authorID = ${req.query.authorId}`;
+    // let sql = `select a.*,ai.imgName,ai.path from ${ARTICLE_TABLE} as a LEFT JOIN (SELECT aid,path,name AS imgName from ${ARTICLEIMG}) as ai on a.articleID = ai.aid`
+    db.query(sql, '', (err, result) => {
+        if (err) {
+            console.log(err)
+            return false
+        } else {
+            res.send({code: "200", message: "查询成功", result: result});
         }
     })
 })

@@ -44,7 +44,7 @@
             <img :src="topicsContent.topicImg" :alt="topicsContent.topicTitle" :title="topicsContent.topicTitle">
         </router-link>
         <div class="topics-info fr">
-            <router-link to="/" :title="topicsContent.topicTitle" class="topics-info-title ellipsis" tag="h5">{{topicsContent.topicName}}</router-link>
+            <router-link to="/" :title="topicsContent.topicTitle" class="topics-info-title ellipsis" tag="h5">{{topicsContent.topicName.substring(0, 5)}}</router-link>
             <span class="topics-info-follow">{{topicsContent.topicSum}} 关注</span>
             <button class="top-info-button" @click="follow"  v-if="!topicsContent.isFollow"> + 关注 </button>
             <button class="top-info-button" @click="follow"  v-else> 已关注 </button>
