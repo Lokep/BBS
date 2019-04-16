@@ -145,11 +145,9 @@ export default {
                         console.log(err)
                     })
                 } else {
-                    console.log('error submit!!');
                     return false;
                 }
             });
-            console.log('123456')
         },
         shifrCarton(e){
             let iptType = e.target.type

@@ -75,7 +75,7 @@
           </el-form-item>
         </el-form>
         <div class="ov">
-          <router-link to="/sign" tag="span" class="fl sign-forgetPWD hover-in-blue pointer">去登录</router-link>
+          <router-link to="/login" tag="span" class="fl sign-forgetPWD hover-in-blue pointer">去登录</router-link>
         </div>
       </div>
 

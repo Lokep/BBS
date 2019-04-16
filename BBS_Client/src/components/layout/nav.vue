@@ -101,7 +101,7 @@
 
         </el-menu>
         <ul class="nav-user fr nav-logged-in" v-if="isLogged">
-            <router-link tag="li" to="/" class="nav-question">
+            <!-- <router-link tag="li" to="/" class="nav-question">
                 去提问
             </router-link>
             <router-link tag="li" to="/">
@@ -109,7 +109,7 @@
             </router-link>
             <router-link tag="li" to="/">
                 <img class="nav-icon-message" src="../../assets/svgs/message.svg" alt="">
-            </router-link>
+            </router-link> -->
             <li>
                 <el-dropdown>
                     <span class="el-dropdown-link">

@@ -34,6 +34,7 @@
   </el-dialog>
 </template>
 <script>
+import STORAGE from '../../assets/javascripts/storage.js'
   export default {
     props: ['isVisible', "inputType"],
     data() {
@@ -49,7 +50,6 @@
       if (userinfo) {
         userinfo = JSON.parse(userinfo)
         this.userinfo = userinfo[0]
-        console.log(this.userinfo, "this.userinfo")
       }
     },
     methods: {
@@ -103,6 +103,10 @@
               type: "success",
               message: res.data.message
             });
+            console.log(this.newInfo)
+            let userInfo = STORAGE.GET('USERINFO')
+            userInfo[0].phone = this.newInfo 
+            STORAGE.SET(userInfo)
             this.onCancel()
           }
         })
@@ -118,7 +122,12 @@
               type: "success",
               message: res.data.message
             });
+
+            let userInfo = STORAGE.GET('USERINFO')
+            userInfo[0].email = this.newInfo 
+            STORAGE.SET(userInfo)
             this.onCancel()
+            
           }
         })
       }

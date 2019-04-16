@@ -40,7 +40,7 @@ export default {
 }
 .container{
   width: 1032px;
-  margin: 10px auto;
-  padding: 60px 0 0 0;
+  margin: 70px auto;
+  /* padding: 60px 0 0 0; */
 }
 </style>

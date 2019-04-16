@@ -53,7 +53,9 @@
         float: left;
         width: 150px;
     }
-
+    .personal-content .list{
+margin: 0;
+    }
 </style>
 <template>
     <div class="personal">

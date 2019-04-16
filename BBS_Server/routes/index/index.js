@@ -47,7 +47,7 @@ router.get('/anthorArticleList', (req, res, next) => {
             console.log(err)
             return false
         } else {
-            res.send({code: "200", message: "查询成功", result: result});
+            res.send({ code: "200", message: "查询成功", result: result });
         }
     })
 })
@@ -98,7 +98,6 @@ router.post('/sendComent', (req, res, next) => {
                 if (error) {
                     jsonResult(res)
                 } else {
-                    console.log(resultList)
                     jsonResult(res, resultList)
                 }
             })
@@ -109,6 +108,23 @@ router.post('/sendComent', (req, res, next) => {
 
 router.post('/articleCollect', (req, res, next) => {
 
+})
+
+
+router.get('/agrees', (req, res, next) => {
+    let articleID = req.query.articleID
+    let agrees = req.query.agrees
+    let sql = `UPDATE article SET agrees = ${agrees} WHERE articleID = ${articleID}`
+    console.log(req.query)
+    db.query(sql, '', (err, result) => {
+        if (err) {
+            console.log(err)
+            return false
+        } else {
+            console.log(result)
+            jsonResult(res, { code: 200 })
+        }
+    })
 })
 
 module.exports = router;

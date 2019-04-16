@@ -58,12 +58,12 @@
             </span>
         </div>
         <ul class="list-tools ov">
-            <li class="list-tools-agree el-icon-caret-top">赞同 {{p.agrees}}</li>
-            <li class="list-tools-disagree el-icon-caret-bottom">{{p.disagrees}}</li>
-            <li class="list-tools-comment" @click="showComment">添加评论{{p.comments}}</li>
-            <li class="list-tools-collect" @click="collect">收藏{{p.collects}}</li>
-            <li class="list-tools-nointerests">不感兴趣{{p.noInterests}}</li>
-            <li class="list-tools-accusation">举报{{p.accusation}}</li>
+            <li class="list-tools-agree el-icon-caret-top" :isAgree="isAgree"  @click="agree(isAgree)">赞同 {{p.agrees}}</li>
+            <!-- <li class="list-tools-disagree el-icon-caret-bottom">{{p.disagrees}}</li> -->
+            <li class="list-tools-comment" @click="showComment">添加评论</li>
+            <!-- <li class="list-tools-collect" @click="collect">收藏{{p.collects}}</li> -->
+            <!-- <li class="list-tools-nointerests">不感兴趣{{p.noInterests}}</li> -->
+            <!-- <li class="list-tools-accusation">举报{{p.accusation}}</li> -->
         </ul>
         <div class="comments" v-show="showComments">
             <Comment @addNewComment='addNewComment' :acceptComment=commentsContent :articleID=p.articleID ></Comment>
@@ -84,7 +84,8 @@ export default {
         return{
             serverPath:'http://192.168.1.90:3000',
             showComments:false,
-            commentsContent:[]
+            commentsContent:[],
+            isAgree:true
         }
     },
     components:{
@@ -106,11 +107,35 @@ export default {
                 console.log(err)
             })
         },
-        collect(){
-            
-        },
+        
         addNewComment(v){
             this.commentsContent.push(v)
+        },
+
+        agree(e){
+            let that = this
+
+            if(!this.p.agrees){
+                this.p.agrees = 0
+            }
+            if(e){
+                this.p.agrees++
+            }else{
+                this.p.agrees--
+            }
+
+            this.$axios.get('/api/agrees',{
+                params: {
+                    articleID: that.p.articleID,
+                    agrees:that.p.agrees
+                }
+            }).then(res=>{
+                if(res.status == 200){
+                    this.isAgree=!e
+                }
+            }).catch(err=>{
+                return false
+            })
         }
     },
     mounted(){
