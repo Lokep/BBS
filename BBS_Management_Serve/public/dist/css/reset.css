@@ -1,0 +1,272 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  font-family: 'Microsoft YaHei';
+  vertical-align: baseline;
+}
+
+
+* {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+  tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: transparent;
+  -ms-tap-highlight-color: transparent;
+  font-family: "PingFangSC-Regular", "苹方", "Microsoft YaHei", "微软雅黑";
+}
+
+/* HTML5 display-role reset for older browsers */
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+  background: #efefef;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+input,
+textarea {
+  outline: none;
+}
+
+img {
+  border: 0;
+}
+
+body,
+button,
+input,
+select,
+textarea {
+  font-size: 12px;
+  font-family: "PingFangSC-Regular", "苹方", "Microsoft YaHei", "微软雅黑";
+}
+
+.inner {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+
+.clearfix {
+  zoom: 1
+}
+
+.clear {
+  display: block;
+  font-size: 0;
+  height: 0;
+  line-height: 0
+}
+
+.hide,
+.none {
+  display: none
+}
+
+.block {
+  display: block
+}
+
+.fl,
+.fr {
+  display: inline
+}
+
+.fl {
+  float: left
+}
+
+.fr {
+  float: right
+}
+
+.ov {
+  overflow: hidden;
+}
+
+.inline {
+  display: inline;
+}
+
+.img100 {
+  width: 100%;
+  height: 100%
+}
+
+.textR {
+  text-align: right
+}
+
+.textL {
+  text-align: left
+}
+
+.textEllipsis {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 1;
+  line-clamp: 1
+}
+
+.textNewline {
+  white-space: pre-line
+}
+
+.tc {
+  text-align: center
+}
+
+.cursor {
+  cursor: pointer;
+}
+.cb::before,.cb::after{
+    display: block;
+    content: '';
+    clear: both;
+    height: 0;
+    line-height: 0;
+}
+input[type="image"],
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+button[type="button"],
+button[type="image"],
+button[type="reset"],
+button[type="submit"]{
+    cursor: pointer;
+}
