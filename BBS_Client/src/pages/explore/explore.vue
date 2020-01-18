@@ -1,7 +1,4 @@
-<style>
-    .explore-title{
-        margin-bottom: 20px;
-    }
+<style scoped>
     .el-select{
         margin: 3px 0 0 25px;
         width: 115px;
@@ -11,6 +8,15 @@
         outline: none;
         -webkit-appearance: normal;
         line-height: 56px;
+    }
+    .explore-lists {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: start;
+    }
+    .explore-list {
+        margin-right: 38px;
+        margin-bottom: 15px;
     }
 </style>
 <template>
@@ -36,7 +42,7 @@
         </div>
 
         <div class="explore-lists ov">
-            <Activity v-for="(a, i) in activityList" :key = "i" :activityInfo="a"></Activity>
+            <Activity class="explore-list" v-for="(a, i) in activityList" :key = "i" :activityInfo="a"></Activity>
         </div>
         <EnddingLine></EnddingLine>
     </div>

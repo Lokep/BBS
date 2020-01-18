@@ -1,6 +1,6 @@
 <style>
     .list{
-        padding: 20px 0;
+        padding: 8px 0;
         width: 654px;
         margin: 0 auto;
         border-bottom: 1px solid #F0F2F7;     
@@ -26,10 +26,9 @@
     }
     .list-inshort{
         color:#1A1A1A;
-        font-size: 15px;
+        font-size: 13px;
         word-break: break-word;
         line-height: 1.6;
-        margin-top: 5px;
     }
     .read-whole-art:after{
         content:'阅读全文';
@@ -39,7 +38,10 @@
         background-color: rgba(255,255,255,.4);
         cursor: pointer;
     }
-    
+    .err-pic {
+        width: 80px;
+        margin: 20px auto;
+    }
 </style>
 <template>
     <!-- 无图的时候，展示2行共65个字，有图展示4行共90个 -->
@@ -47,13 +49,15 @@
     <div class="list">
         <router-link :to=" '/article/'+p.articleID" tag="h3" class="list-title"><span class="list-tag">{{p.tagName}}</span>{{p.title}}</router-link>
         <div class="list-content ov" v-if='p.imgName'>
-            <img class="list-img fl" :src="serverPath + p.path+p.imgName" alt="article">
-            <span class="list-inshort fr ellipsis-within-four-rows list-inshort-with-img read-whole-art">
+            <el-img class="list-img fl" :src="serverPath + '/' + p.imgName" lazy>
+                <img class="err-pic" slot="error" src="@/assets/images/sign-normal.png" />
+            </el-img>
+            <span class="list-inshort fr ellipsis-within-five-rows list-inshort-with-img read-whole-art">
                 <b>{{p.author}}</b>： {{p.content}}
             </span>
         </div>
         <div class="list-content ov" v-else>
-            <span class="list-inshort fr ellipsis-within-four-rows list-inshort-without-img read-whole-art">
+            <span class="list-inshort fr ellipsis-within-three-rows list-inshort-without-img read-whole-art">
                 <b>{{p.author}}</b>： {{p.content}}
             </span>
         </div>
@@ -82,7 +86,7 @@ export default {
     },
     data(){
         return{
-            serverPath:'http://192.168.1.90:3000',
+            serverPath:'http://47.94.252.72:3001',
             showComments:false,
             commentsContent:[],
             isAgree:true

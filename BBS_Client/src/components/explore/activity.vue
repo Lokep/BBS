@@ -1,20 +1,19 @@
 <style>
     .activity{
         width: 220px;
-        height: 282px;
         background: #f3f3f3;
         border-radius: 2px;
-        margin: 0 10px 20px;
+        /* margin: 0 10px 20px; */
     }
     .activity-title{
         font-size: 16px;
-        max-height: 38px;
+        height: 40px;
         line-height: 1.2;
         color: #333;
         cursor: pointer;
     }
     .activity-info{
-        padding: 15px 15px 0;
+        padding: 10px 10px 0;
     }
     .activity-img{
         width: 100%;
@@ -29,16 +28,16 @@
     }
     .btn {
         box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
-        margin: 15px;
+        margin: 5px 15px 10px;
     }
 </style>
 <template>
-    <div class="activity fl">
-        <a :href="activityInfo.link">
-            <img class="activity-img" :src="activityInfo.imgSrc" alt="LOGO">
+    <div class="activity">
+        <a :href="activityInfo.link" target="_blanket">
+            <img class="activity-img" :src="activityInfo.imgSrc" alt="LOGO" lazy/>
         </a>
         <div class="activity-info">
-            <a :href="activityInfo.link" class="ellipsis-within-two-rows activity-title hover-in-blue">{{activityInfo.title}}</a>
+            <a :href="activityInfo.link" class="ellipsis-within-two-rows activity-title hover-in-blue" target="_blanket">{{activityInfo.title}}</a>
             <span class="activity-detail">时间：{{activityInfo.time}}</span>
             <span class="activity-detail">城市：{{activityInfo.city}}</span>
         </div>

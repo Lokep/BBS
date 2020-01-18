@@ -1,11 +1,11 @@
-<style>
+<style scoped>
     .topics-list{
         width: 230px;
         height: 75px;
         padding: 5px 10px;
         margin: 0 8px 25px 0;
     }
-    .topics-list img{
+    .topics-list .topic-pic{
         width: 72px;
         height: 72px;
         border-radius: 4px;
@@ -24,24 +24,33 @@
         color:#007fff;
     }
     .topics-info-follow{
-        font-size:14px;
+        font-size:13px;
         color:#8a9aa9;
         padding: 5px 0 3px;
     }
     .top-info-button{
         color:#37c701;
-        font-size: 14px;
+        font-size: 13px;
         -webkit-appearance: none;
         border:none;
         outline:none;
-        background-color: #fff;
         cursor: pointer;
     }
 </style>
 <template>
     <div class="topics-list ov fl">
         <router-link to="/">
-            <img :src="topicsContent.topicImg" :alt="topicsContent.topicTitle" :title="topicsContent.topicTitle">
+            <!-- <el-image class="topic-pic" 
+                :src="topicsContent.topicImg" 
+                :alt="topicsContent.topicTitle" 
+                :title="topicsContent.topicTitle" 
+                scroll-container="body"
+                lazy /> -->
+            <img class="topic-pic" 
+                :src="topicsContent.topicImg" 
+                :alt="topicsContent.topicTitle" 
+                :title="topicsContent.topicTitle" 
+                />
         </router-link>
         <div class="topics-info fr">
             <router-link to="/" :title="topicsContent.topicTitle" class="topics-info-title ellipsis" tag="h5">{{topicsContent.topicName.substring(0, 5)}}</router-link>

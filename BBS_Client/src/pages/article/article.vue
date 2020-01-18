@@ -11,8 +11,8 @@
         margin: 60px auto 20px;
     }
     .article-headBg{
-        width: 38px;
-        height: 38px;
+        width: 45px;
+        height: 45px;
         border-radius: 4px;
     }
     .article-img{
@@ -50,9 +50,10 @@
     .article-content{
         word-break: break-word;
         line-height: 1.6;
-        font-size: 15px;
+        font-size: 13px;
         color: #1a1a1a;
         text-indent: 2em;
+        text-align:justify;
         margin-top: 15px;
     }
     .article-create{
@@ -79,7 +80,7 @@
             <div class="article-info ov">
                 <div class="article-headBg fl" :style="{backgroundColor:headPicBg}"></div>
                 <div class="article-user fl">
-                    <h6>{{articleInfo.author}}</h6>
+                    <h4>{{articleInfo.author}}</h4>
                     <span class="ellipsis">吃了没呢</span>
                 </div>
                 

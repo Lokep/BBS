@@ -2,18 +2,18 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import Index from '@/pages/index/index'
-import Topics from '@/pages/topics/topics'
-import Explore from '@/pages/explore/explore'
-import Setting from '@/pages/setting/setting'
-import Login from '@/pages/sign/login'
-import Register from '@/pages/sign/register'
-import Sign from '@/pages/sign/sign'
-import ResetPwd from '@/pages/sign/reset-password'
-import Editor from '@/pages/editor/editor'
-import Collection from '@/pages/collection/collection'
-import Hot from '@/pages/hot/hot'
-import Personal from '@/pages/personal/personal'
-import Article from '@/pages/article/article'
+const Topics = () => import('@/pages/topics/topics')
+const Explore = () => import('@/pages/explore/explore')
+const Setting = () => import('@/pages/setting/setting')
+const Login = () => import('@/pages/sign/login')
+const Register = () => import('@/pages/sign/register')
+const Sign = () => import('@/pages/sign/sign')
+const ResetPwd = () => import('@/pages/sign/reset-password')
+const Editor = () => import('@/pages/editor/editor')
+const Collection = () => import('@/pages/collection/collection')
+const Hot = () => import('@/pages/hot/hot')
+const Personal = () => import('@/pages/personal/personal')
+const Article = () => import('@/pages/article/article') 
 
 import STORAGE from '../assets/javascripts/storage'
 

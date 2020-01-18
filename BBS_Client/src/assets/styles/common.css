@@ -23,7 +23,9 @@
 }
 
 .ellipsis-within-two-rows,
-.ellipsis-within-four-rows {
+.ellipsis-within-three-rows,
+.ellipsis-within-four-rows,
+.ellipsis-within-five-rows {
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -34,8 +36,16 @@
     -webkit-line-clamp: 2;
 }
 
+.ellipsis-within-three-rows {
+    -webkit-line-clamp: 3;
+}
+
 .ellipsis-within-four-rows {
     -webkit-line-clamp: 4;
+}
+
+.ellipsis-within-five-rows {
+    -webkit-line-clamp: 5;
 }
 
 .list-inshort-with-img {
@@ -45,7 +55,7 @@
 
 .list-inshort-without-img {
     width: 654px;
-    height: 50px;
+    height: 65px;
 }
 
 
@@ -101,14 +111,14 @@
 .list-tools {
     width: 654px;
     height: 32px;
-    margin: 25px 0 0;
+    margin: 12px 0 0;
 }
 
 .list-tools>li {
     float: left;
     padding: 0 12px;
-    color: hsl(220.00000000000003, 15.6398104265%, 53.6274509804%);
-    font-size: 14px;
+    color: #76839b;
+    font-size: 13px;
     line-height: 30px;
     cursor: pointer;
     margin-right: 10px;
@@ -133,4 +143,19 @@
     padding: 3px 5px;
     font-weight: 400;
     margin-right: 10px;
+}
+
+::-webkit-scrollbar {
+    z-index: 11;
+    width: 6px
+}
+
+::-webkit-scrollbar:horizontal {
+    height: 6px
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    width: 6px;
+    background: #b4bccc
 }
