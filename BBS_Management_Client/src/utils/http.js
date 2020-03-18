@@ -69,7 +69,7 @@ axios.interceptors.response.use(response => {
   return Promise.resolve(err.response)
 });
 
-// axios.defaults.baseURL = '/api';
+axios.defaults.baseURL = '/api';
 axios.defaults.timeout = 10000;
 
 export default axios;
