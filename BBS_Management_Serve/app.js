@@ -37,7 +37,7 @@ app.all('*', function(req, res, next) {
     next();
 });
 
-app.use('/', indexRouter);
+// app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/articles', articlesRouter);
 app.use('/topics', topicsRouter);
