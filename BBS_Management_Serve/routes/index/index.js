@@ -9,12 +9,12 @@ router.get('/', function(req, res, next) {
 
 router.get('/manage/*', function(req, res, next) {
   console.log('...get /manage/* ...');
-  res.sendFile(path.join(__dirname, '../../public', 'home.html'));
+  res.sendFile(path.join(__dirname, '../../public', 'index.html'));
 });
 
 router.get('/manage', function(req, res, next) {
   console.log('...get /manage ...');
-  res.sendFile(path.join(__dirname, '../../public', 'home.html'));
+  res.sendFile(path.join(__dirname, '../../public', 'index.html'));
 });
 
 module.exports = router;
