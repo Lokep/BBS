@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const db = require('../../model/mysql.operation')
 const jsonResult = require('../../model/jsonResult')
+var path = require('path');
 
 const ARTICLE_TABLE = 'article'
 const ARTICLEIMG = 'articleimg'
@@ -9,7 +10,13 @@ const COMMENT_TABLE = 'comment'
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    res.render('index', { title: 'Express' });
+  console.log('...get / ...');
+  res.sendFile(path.join(__dirname, '../../public', 'index.html'));
+});
+
+router.get('/*', function(req, res, next) {
+  console.log('...get / ...');
+  res.sendFile(path.join(__dirname, '../../public', 'index.html'));
 });
 
 router.post('/articleList', (req, res, next) => {
