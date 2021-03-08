@@ -7,7 +7,7 @@ Vue.use(Router)
 
 const router = new Router({
   mode: "history",
-  base: 'admin',
+  base: 'manage',
   routes: [
     {
       path: '/',
