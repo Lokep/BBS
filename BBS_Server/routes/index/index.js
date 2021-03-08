@@ -11,12 +11,14 @@ const COMMENT_TABLE = 'comment'
 /* GET home page. */
 router.get('/', function(req, res, next) {
   console.log('...get / ...');
-  res.sendFile(path.join(__dirname, '../../public', 'index.html'));
+  res.sendFile(path.join(__dirname, '../../dist', 'index.html'));
+  next()
 });
 
 router.get('/*', function(req, res, next) {
   console.log('...get / ...');
-  res.sendFile(path.join(__dirname, '../../public', 'index.html'));
+  res.sendFile(path.join(__dirname, '../../dist', 'index.html'));
+  next()
 });
 
 router.post('/articleList', (req, res, next) => {
