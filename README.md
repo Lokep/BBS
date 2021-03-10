@@ -1,6 +1,6 @@
 # BBS
 BBS 项目参考了思否、掘金、知乎等网站，数据由superagent + cheerio爬取写入到数据库中。
-
+[后台管理预览地址](http://bbs.ilixin.top)
 ### 技术栈
 vue + express + mysql
 
