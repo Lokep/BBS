@@ -89,7 +89,7 @@ router.post('/sendComent', (req, res, next) => {
     let info = req.body
     console.log(info)
     let sql = `INSERT INTO ${COMMENT_TABLE}(parentID,userID,createAt,content,articleID) VALUES(?,?,?,?,?)`
-    let getIDsql = `SELECT max(id) as id,createAt from ${COMMENT_TABLE}`
+    let getIDsql = `SELECT max(id) as id,createAt from ${COMMENT_TABLE} GROUP BY id, createAt`
     let params = [
         info.parentID,
         info.userID,
